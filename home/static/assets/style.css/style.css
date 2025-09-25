@@ -81,3 +81,9 @@ html {
 .h600 {
   height: 600px;
 }
+
+iframe {
+  width: 100% !important;
+  height: 100% !important;
+  border: 0;
+}

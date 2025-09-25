@@ -8,7 +8,7 @@
 {% block body %}
 
 
-
+{% for rs in setting %}
 
 <!-- ===== ABOUT SECTION START ===== -->
 <section id="about" class="relative py-20 bg-gray-50">
@@ -292,7 +292,7 @@
     
     <!-- Heading -->
     <div class="text-center mb-12">
-      <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">What Our Clients Say</h2>
+      <h2 class="text-4xl md:text-5xl font-extrabold text-gray-600 mb-4">What Our Clients Say</h2>
       <p class="text-lg text-gray-600 max-w-2xl mx-auto">
         Loved by homeowners, trusted by businesses. Here’s why people choose us.
       </p>
@@ -437,8 +437,8 @@
             </div>
             <div>
               <p class="text-gray-600">Call Us</p>
-              <a href="tel:+919898034466" class="font-semibold text-gray-900 hover:text-indigo-600">
-                +91 9898 03 4466
+              <a href="tel:+91{{rs.phone}}" class="font-semibold text-gray-900 hover:text-indigo-600">
+                +91 {{rs.phone}}
               </a>
             </div>
           </div>
@@ -449,8 +449,8 @@
             </div>
             <div>
               <p class="text-gray-600">Email</p>
-              <a href="mailto:info@alamdarwindows.com" class="font-semibold text-gray-900 hover:text-indigo-600">
-                info@alamdarwindows.com
+              <a href="mailto:{{rs.email}}" class="font-semibold text-gray-900 hover:text-indigo-600">
+                {{rs.email}}
               </a>
             </div>
           </div>
@@ -461,7 +461,7 @@
             </div>
             <div>
               <p class="text-gray-600">Office</p>
-              <p class="font-semibold text-gray-900">123 Business Street, Mumbai</p>
+              <p class="font-semibold text-gray-900">{{rs.address}}</p>
             </div>
           </div>
         </div>
@@ -530,23 +530,13 @@
 
           <!-- ===== GOOGLE MAP SECTION ===== -->
           
-          
-<!-- ===== GOOGLE MAP SECTION ===== -->
-<div class="container-fluid p-0 mt-5">
-  <div class="row">
-    <div class="col-lg-12">
-      <!-- Parent div sets height & width -->
-      <div class="mt-4" style="width:100%; height: 450px;">
-        <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.07144441048!2d72.84047029999999!3d19.1483497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b73fa1604375%3A0x315d30872a46b2f6!2sMakaan%20Hub!5e0!3m2!1sen!2sin!4v1751291622842!5m2!1sen!2sin" 
-          width="100%" height="100%" 
-          style="border:0;" allowfullscreen="" loading="lazy" 
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-      </div>
-    </div>
+  <br>
+
+<section id="map" class="w-full">
+  <div class="w-full h-[600px]">
+    {{ rs.google_map|safe }}
   </div>
-</div>
+</section>
 <!-- ===== GOOGLE MAP SECTION END ===== -->
 
 
@@ -559,7 +549,7 @@
 <!-- ===== CONTACT SECTION END ===== -->
 
 
-
+{% endfor %}
 
 
 
