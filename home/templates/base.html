@@ -4,36 +4,49 @@
 <html class="no-js" lang="zxx">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="{% static '' %}assets/style.css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-            html {
-                scroll-behavior: smooth;
-            }
-            .nav-link {
-                transition: all .18s ease-in-out;
-            }
-            .nav-link:hover {
-                transform: translateY(-2px);
-                background-color: rgba(79,70,229,0.06);
-                border-radius: .375rem;
-                color: #4f46e5;
-            }
-            .drawer-link {
-                transition: all .2s ease-in-out;
-            }
-            .drawer-link:hover{
-                background-color: rgba(79,70,229,0.1);
-                color:#4f46e5;
-                transform: translateX(4px);
-            }
-    </style>
-    <title>Alamdar System Windows</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Your Custom CSS -->
+  <link rel="stylesheet" href="{% static 'assets/style.css/style.css' %}">
+
+  <!-- ✅ Font Awesome (only one, latest stable) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .nav-link {
+      transition: all .18s ease-in-out;
+    }
+
+    .nav-link:hover {
+      transform: translateY(-2px);
+      background-color: rgba(79, 70, 229, 0.06);
+      border-radius: .375rem;
+      color: #4f46e5;
+    }
+
+    .drawer-link {
+      transition: all .2s ease-in-out;
+    }
+
+    .drawer-link:hover {
+      background-color: rgba(79, 70, 229, 0.1);
+      color: #4f46e5;
+      transform: translateX(4px);
+    }
+  </style>
+
+  <title>Alamdar System Windows</title>
 </head>
+
+<main class="mt-28">
 
 <body>
     {% include "includes/header.html" %}
@@ -73,7 +86,7 @@
       <!-- Content Buttons -->
       <div class="p-4 flex flex-col gap-3">
         <!-- Call Now Button -->
-        <a id="callBtn" href="tel:+9198xxxxxxxx"
+        <a id="callBtn" href="tel:+91{{i.phone}}"
           class="flex flex-col items-center gap-1 bg-blue-600 text-white px-6 py-4 rounded-lg shadow-lg text-center">
           <div class="flex items-center gap-2 text-lg font-semibold">
             <i class="fa-solid fa-phone"></i> <span>Call Now</span>
@@ -82,7 +95,7 @@
           <small id="officeHours" class="text-[11px] text-gray-200"></small>
         </a>
 
-        <a href="https://wa.me/9198xxxxxxxx" target="_blank"
+        <a href="https://wa.me/{{i.whatsapp}}" target="_blank"
           class="fab-item flex items-center gap-2 bg-green-500 text-white px-4 py-3 rounded-lg shadow-lg">
           <i class="fa-brands fa-whatsapp"></i> WhatsApp
         </a>
@@ -101,8 +114,42 @@
 
 <script src="{% static '' %}assets/js/scripts.js"></script>
 
-</body>
 
+
+<!-- ===== JS for Sidebar ===== -->
+<script>
+  const menuBtn = document.getElementById("menuBtn");
+  const sidebar = document.getElementById("sidebar");
+  const drawer = document.getElementById("drawer");
+  const overlay = document.getElementById("overlay");
+  const closeBtn = document.getElementById("closeBtn");
+
+  menuBtn.addEventListener("click", () => {
+    sidebar.classList.remove("hidden");
+    setTimeout(() => {
+      drawer.classList.remove("-translate-x-full");
+    }, 10);
+  });
+
+  closeBtn.addEventListener("click", () => {
+    drawer.classList.add("-translate-x-full");
+    setTimeout(() => {
+      sidebar.classList.add("hidden");
+    }, 300);
+  });
+
+  overlay.addEventListener("click", () => {
+    drawer.classList.add("-translate-x-full");
+    setTimeout(() => {
+      sidebar.classList.add("hidden");
+    }, 300);
+  });
+
+  
+</script>
+
+</body>
+</main>
 
 </html>
 

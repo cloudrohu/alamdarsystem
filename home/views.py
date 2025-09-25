@@ -1,17 +1,18 @@
 from django.shortcuts import render,redirect
 from home.models import *
 from product.models import *
+import inspect
 
 
 # Create your views here.
 def index(request):    
-    setting = Setting.objects.all().order_by('-id')[0:1]
-    slider = Slider.objects.all().order_by('-id')[0:6]
-    about = About_Page.objects.all().order_by('-id')[0:1]
+    setting = Setting.objects.all().order_by('-id')[:1]
+    slider = Slider.objects.all().order_by('-id')[:6]
+    about = About_Page.objects.all().order_by('-id')[:1]
     contentclider = Content_Slider.objects.all().order_by('-id')
-    service = Service.objects.all().order_by('-id')
-
-    faq = FAQ.objects.all().order_by('-id')[0:6]
+    product = Product.objects.all().order_by('-id')
+    gallery = MediaGallery.objects.all().order_by('-id')[:8]   # ✅ yahi sahi hai
+    faq = FAQ.objects.all().order_by('-id')[:6]
 
 
     
@@ -19,12 +20,13 @@ def index(request):
 
     page="home"
     context={
-        'setting':setting,
-        'slider':slider,
-        'about':about,
-        'contentclider':contentclider,
-        'faq':faq,
-        'service':service,
+        'setting': setting,
+        'slider': slider,
+        'about': about,
+        'contentclider': contentclider,
+        'faq': faq,
+        'product': product,
+        'gallery': gallery,
     }
 
     return render(request,'main/index.html',context)

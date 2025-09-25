@@ -29,7 +29,6 @@ class About_Page(models.Model):
     class Meta:
         verbose_name_plural='2. About Page'
 
-
 class Contact_Page(models.Model):
     image = models.ImageField(upload_to='logo/')
     title = models.CharField(max_length=150)
@@ -41,8 +40,6 @@ class Contact_Page(models.Model):
     
     class Meta:
         verbose_name_plural='3. Contact Page'
-
-
 
 class Setting(models.Model):
     STATUS = (
@@ -95,7 +92,6 @@ class Setting(models.Model):
     class Meta:
         verbose_name_plural='9. Web Site Setting'
 
-
 class ContactMessage(models.Model):
     STATUS = (
         ('New', 'New'),
@@ -117,7 +113,6 @@ class ContactMessage(models.Model):
     
     class Meta:
         verbose_name_plural='1. ContactMessage'
-
 
 class ContactForm(ModelForm):
     class Meta:
@@ -145,7 +140,6 @@ class FAQ(models.Model):
     def __str__(self):
         return self.question
 
-
 class Our_Team(models.Model):
     title = models.CharField(max_length=50,blank=True)
     designation = models.CharField(max_length=50,blank=True)
@@ -168,7 +162,6 @@ class Our_Team(models.Model):
     
     class Meta:
         verbose_name_plural='4. Our Team'
-   
 
 class Testimonial(models.Model):
     name = models.CharField(max_length=50,blank=True)
@@ -190,7 +183,6 @@ class Testimonial(models.Model):
     class Meta:
         verbose_name_plural='5. Testimonial'
 
-
 class Social_Link(models.Model):
     social_site = models.ForeignKey(Social_Site, on_delete=models.CASCADE)
     our_team = models.ForeignKey(Our_Team, on_delete=models.CASCADE) # many to one relation with Brand
@@ -200,7 +192,6 @@ class Social_Link(models.Model):
         return self.link    
     class Meta:
         verbose_name_plural='6. Social Link'
-
 
 class Offer(models.Model):
     title = models.CharField(max_length=50)
@@ -221,7 +212,6 @@ class Offer(models.Model):
         return self.title
     class Meta:
         verbose_name_plural='7. Offer'
-
 
 class Slider(models.Model):
     title = models.CharField(max_length=50)
@@ -254,8 +244,6 @@ class Content_Slider(models.Model):
     class Meta:
         verbose_name_plural='11. Content_Slider'
 
-
-
 class Banner(models.Model):
     title = models.CharField(max_length=50)
     link = models.CharField(max_length=150)
@@ -274,4 +262,23 @@ class Banner(models.Model):
         return self.title
     class Meta:
         verbose_name_plural='10. Banner'
+
+
+class MediaGallery(models.Model):
+    title = models.CharField(max_length=50)
+    image=models.ImageField(blank=True,upload_to='images/')
+    featured_project = models.BooleanField(default=False)
+    create_at=models.DateTimeField(auto_now_add=True)
+    update_at=models.DateTimeField(auto_now=True)
+
+    def image_tag(self):
+        if self.image.url is not None:
+            return mark_safe('<img src="{}" height="50"/>'.format(self.image.url))
+        else:
+            return ""
+
+    def __str__(self):
+        return self.title
+    class Meta:
+        verbose_name_plural='10. Gallery'
 

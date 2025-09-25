@@ -74,7 +74,6 @@ class Project_Images(models.Model):
     def __str__(self):
         return self.title
 
-
 class Service(models.Model):    
     STATUS = (
         ('True', 'True'),
@@ -134,7 +133,6 @@ class Service_Images(models.Model):
 
     def __str__(self):
         return self.title
-
 
 class Product(models.Model):    
     STATUS = (
@@ -198,7 +196,6 @@ class Images(models.Model):
 
     def __str__(self):
         return self.title
-
 
 class Comment(models.Model):
     STATUS = (

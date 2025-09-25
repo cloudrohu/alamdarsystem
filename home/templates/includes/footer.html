@@ -6,10 +6,8 @@
 <!-- ===== FOOTER START ===== -->
 <footer class="bg-gray-900 text-gray-300 pt-16 pb-8">
   <div class="container mx-auto px-6 md:px-12 lg:px-20">
-
     <!-- Grid -->
     <div class="grid gap-10 md:grid-cols-3">
-
       <!-- Logo + About -->
       <div>
         <a href="#" class="flex items-center gap-3 mb-6">
@@ -20,16 +18,15 @@
           Delivering high-quality windows, doors, and interiors with modern design and durability.
         </p>
       </div>
-
       <!-- Quick Links -->
       <div>
         <h3 class="text-white text-lg font-semibold mb-6">Quick Links</h3>
         <ul class="space-y-3">
-          <li><a href="#about" class="hover:text-indigo-400">About Us</a></li>
-          <li><a href="#products" class="hover:text-indigo-400">Products</a></li>
-          <li><a href="#services" class="hover:text-indigo-400">Services</a></li>
-          <li><a href="#gallery" class="hover:text-indigo-400">Gallery</a></li>
-          <li><a href="#contact" class="hover:text-indigo-400">Contact</a></li>
+          <li><a href="{% url "aboutus" %}" class="hover:text-indigo-400">About Us</a></li>
+          <li><a href="{% url "product" %}" class="hover:text-indigo-400">Products</a></li>
+          <li><a href="{% url "service" %}" class="hover:text-indigo-400">Services</a></li>
+          <li><a href="{% url "gallery" %}" class="hover:text-indigo-400">Gallery</a></li>
+          <li><a href="{% url "contactus" %}" class="hover:text-indigo-400">Contact</a></li>
         </ul>
       </div>
 
@@ -65,9 +62,6 @@
   </div>
 </footer>
 <!-- ===== FOOTER END ===== -->
-
-
-
 {% endfor %}
 <!-- footer-end -->
 

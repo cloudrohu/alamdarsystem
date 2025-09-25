@@ -76,14 +76,15 @@
 
     <!-- Product Grid -->
     <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+      {% for rs in product %}
 
       <!-- Product Card Example -->
       <div class="bg-gray-50 rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden">
-        <img src="https://picsum.photos/id/1015/500/300" alt="Product 1" class="w-full h-56 object-cover">
+        <img src="{{rs.image.url}}" alt="Product 1" class="w-full h-56 object-cover">
         <div class="p-6">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Premium Windows</h3>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">{{rs.title}}</h3>
           <p class="text-gray-600 mb-4">
-            Sleek PVC & Aluminium windows with superior insulation and contemporary aesthetics.
+            {{rs.description |truncatechars:450}}
           </p>
           <!-- Features -->
           <ul class="space-y-2 mb-6 text-gray-700">
@@ -92,104 +93,21 @@
             <li class="flex items-start gap-2"><i class="fa-solid fa-check text-indigo-600 mt-1"></i> 15+ modern frame colors available</li>
           </ul>
           <!-- Shiny Button -->
-          <a href="#"
+          <a href="{{rs.get_absolute_url}}"
             class="inline-block w-full text-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white px-5 py-2 rounded-lg shadow-md hover:shadow-xl transition font-medium animate-pulse">
             View Details
           </a>
         </div>
       </div>
 
-      <!-- Repeat Cards with different data -->
-      <div class="bg-gray-50 rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden">
-        <img src="https://picsum.photos/id/1016/500/300" alt="Product 2" class="w-full h-56 object-cover">
-        <div class="p-6">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Sliding Doors</h3>
-          <p class="text-gray-600 mb-4">Smooth sliding doors combining energy efficiency with space-saving design.</p>
-          <ul class="space-y-2 mb-6 text-gray-700">
-            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-indigo-600 mt-1"></i> Soft-close mechanism</li>
-            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-indigo-600 mt-1"></i> Available in <span class="font-semibold">wood & metal frames</span></li>
-            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-indigo-600 mt-1"></i> Custom sizes for balconies & offices</li>
-          </ul>
-          <a href="#"
-            class="inline-block w-full text-center bg-gradient-to-r from-green-400 via-teal-500 to-cyan-500 text-white px-5 py-2 rounded-lg shadow-md hover:shadow-xl transition font-medium animate-pulse">
-            View Details
-          </a>
-        </div>
-      </div>
+      {% endfor %}
 
-      <div class="bg-gray-50 rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden">
-        <img src="https://picsum.photos/id/1021/500/300" alt="Product 3" class="w-full h-56 object-cover">
-        <div class="p-6">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Glass Partitions</h3>
-          <p class="text-gray-600 mb-4">Modern glass partitions perfect for offices and luxury interiors.</p>
-          <ul class="space-y-2 mb-6 text-gray-700">
-            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-indigo-600 mt-1"></i> Toughened glass up to 12mm</li>
-            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-indigo-600 mt-1"></i> Privacy & frosted options</li>
-            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-indigo-600 mt-1"></i> Seamless & elegant look</li>
-          </ul>
-          <a href="#"
-            class="inline-block w-full text-center bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 text-white px-5 py-2 rounded-lg shadow-md hover:shadow-xl transition font-medium animate-pulse">
-            View Details
-          </a>
-        </div>
-      </div>
-
-      <div class="bg-gray-50 rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden">
-        <img src="https://picsum.photos/id/1035/500/300" alt="Product 4" class="w-full h-56 object-cover">
-        <div class="p-6">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">French Windows</h3>
-          <p class="text-gray-600 mb-4">Classic French style windows that enhance charm & natural light.</p>
-          <ul class="space-y-2 mb-6 text-gray-700">
-            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-indigo-600 mt-1"></i> European inspired designs</li>
-            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-indigo-600 mt-1"></i> Rust-proof frames</li>
-            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-indigo-600 mt-1"></i> Available in double-glass panels</li>
-          </ul>
-          <a href="#"
-            class="inline-block w-full text-center bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 text-white px-5 py-2 rounded-lg shadow-md hover:shadow-xl transition font-medium animate-pulse">
-            View Details
-          </a>
-        </div>
-      </div>
-
-      <div class="bg-gray-50 rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden">
-        <img src="https://picsum.photos/id/1040/500/300" alt="Product 5" class="w-full h-56 object-cover">
-        <div class="p-6">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Office Cabins</h3>
-          <p class="text-gray-600 mb-4">Stylish cabins designed for privacy, comfort & modern workplaces.</p>
-          <ul class="space-y-2 mb-6 text-gray-700">
-            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-indigo-600 mt-1"></i> Acoustic soundproofing</li>
-            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-indigo-600 mt-1"></i> Modular design</li>
-            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-indigo-600 mt-1"></i> High-end finish</li>
-          </ul>
-          <a href="#"
-            class="inline-block w-full text-center bg-gradient-to-r from-indigo-600 via-blue-500 to-cyan-400 text-white px-5 py-2 rounded-lg shadow-md hover:shadow-xl transition font-medium animate-pulse">
-            View Details
-          </a>
-        </div>
-      </div>
-
-      <div class="bg-gray-50 rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden">
-        <img src="https://picsum.photos/id/1045/500/300" alt="Product 6" class="w-full h-56 object-cover">
-        <div class="p-6">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Balcony Enclosures</h3>
-          <p class="text-gray-600 mb-4">Secure & elegant balcony enclosures offering comfort and safety.</p>
-          <ul class="space-y-2 mb-6 text-gray-700">
-            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-indigo-600 mt-1"></i> Weather resistant panels</li>
-            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-indigo-600 mt-1"></i> Child safety lock system</li>
-            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-indigo-600 mt-1"></i> Premium glass options</li>
-          </ul>
-          <a href="#"
-            class="inline-block w-full text-center bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 text-white px-5 py-2 rounded-lg shadow-md hover:shadow-xl transition font-medium animate-pulse">
-            View Details
-          </a>
-        </div>
-      </div>
 
     </div>
 
     <!-- See All Button -->
     <div class="text-center mt-14">
-      <a href="all-products.html"
+      <a href="{% url "product" %}"
         class="inline-block bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white px-12 py-4 rounded-full shadow-lg hover:shadow-2xl font-semibold text-lg animate-pulse">
         See All Products →
       </a>
@@ -214,60 +132,19 @@
 
     <!-- Services Grid -->
     <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-
-      <!-- Service 1 -->
-      <div class="bg-gray-50 rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-2 p-8 text-center">
-        <div class="text-indigo-600 text-5xl mb-6">
-          <i class="fa-solid fa-window-maximize"></i>
+      {% for rs in service %}
+        <!-- Service 1 -->
+        <div class="bg-gray-50 rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-2 p-8 text-center">
+          <div class="text-indigo-600 text-5xl mb-6">
+            <img src="{{rs.image.url}}" alt="" class="rounded-lg h-[250px] w-[350px]">
+          </div>
+          <a href="{{rs.get_absolute_url}}">
+          <h3 class="text-xl font-semibold text-gray-800 mb-4">{{rs.title}}</h3>
+          </a>
+          <p class="text-gray-600">{{rs.description | truncatechars:200}}.</p>
         </div>
-        <h3 class="text-xl font-semibold text-gray-800 mb-4">Custom Windows</h3>
-        <p class="text-gray-600">Tailor-made PVC & Aluminium windows designed to match your lifestyle and interiors.</p>
-      </div>
-
-      <!-- Service 2 -->
-      <div class="bg-gray-50 rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-2 p-8 text-center">
-        <div class="text-green-600 text-5xl mb-6">
-          <i class="fa-solid fa-door-open"></i>
-        </div>
-        <h3 class="text-xl font-semibold text-gray-800 mb-4">Sliding & Folding Doors</h3>
-        <p class="text-gray-600">Space-saving, elegant, and smooth-operation doors for modern homes and offices.</p>
-      </div>
-
-      <!-- Service 3 -->
-      <div class="bg-gray-50 rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-2 p-8 text-center">
-        <div class="text-blue-500 text-5xl mb-6">
-          <i class="fa-solid fa-building"></i>
-        </div>
-        <h3 class="text-xl font-semibold text-gray-800 mb-4">Glass Partitions</h3>
-        <p class="text-gray-600">Stylish and durable glass partitions ideal for offices, meeting rooms, and interiors.</p>
-      </div>
-
-      <!-- Service 4 -->
-      <div class="bg-gray-50 rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-2 p-8 text-center">
-        <div class="text-orange-500 text-5xl mb-6">
-          <i class="fa-solid fa-city"></i>
-        </div>
-        <h3 class="text-xl font-semibold text-gray-800 mb-4">Commercial Interiors</h3>
-        <p class="text-gray-600">End-to-end commercial interior solutions blending design, comfort, and durability.</p>
-      </div>
-
-      <!-- Service 5 -->
-      <div class="bg-gray-50 rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-2 p-8 text-center">
-        <div class="text-pink-500 text-5xl mb-6">
-          <i class="fa-solid fa-couch"></i>
-        </div>
-        <h3 class="text-xl font-semibold text-gray-800 mb-4">Residential Interiors</h3>
-        <p class="text-gray-600">Beautifully designed residential interiors crafted for elegance and functionality.</p>
-      </div>
-
-      <!-- Service 6 -->
-      <div class="bg-gray-50 rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-2 p-8 text-center">
-        <div class="text-yellow-500 text-5xl mb-6">
-          <i class="fa-solid fa-screwdriver-wrench"></i>
-        </div>
-        <h3 class="text-xl font-semibold text-gray-800 mb-4">Installation & Support</h3>
-        <p class="text-gray-600">Expert installation with post-installation support and maintenance services.</p>
-      </div>
+      {% endfor %}
+ 
 
     </div>
   </div>
@@ -277,8 +154,6 @@
 
 
 <!-- Gallery Section -->
-<gallery>
-
 <section id="gallery" class="py-20 bg-white">
   <div class="container mx-auto px-6 md:px-12 lg:px-20">
     <!-- Heading -->
@@ -291,13 +166,13 @@
 
     <!-- Gallery Grid -->
     <div id="galleryGrid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"></div>
-       <div class="text-center mt-10">
-     <a href="gallery.html" 
-          class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-semibold rounded-lg shadow-lg hover:from-blue-700 hover:to-indigo-800 hover:shadow-xl transition duration-300 ease-in-out">
-          See All Gallery 
-          <i class="fa-solid fa-arrow-right ml-2"></i>
-        </a>
 
+    <div class="text-center mt-10">
+      <a href="{% url 'gallery' %}" 
+        class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-semibold rounded-lg shadow-lg hover:from-blue-700 hover:to-indigo-800 hover:shadow-xl transition duration-300 ease-in-out">
+        See All Gallery 
+        <i class="fa-solid fa-arrow-right ml-2"></i>
+      </a>
     </div>
   </div>
 </section>
@@ -309,23 +184,15 @@
 </div>
 
 <script>
-  // Image array (yaha apni images ka path dalna)
+  // ✅ Fixed: Comma issue removed
   const images = [
-    "{% static '' %}assets/img/gallery/image copy 6.png",
-    "{% static '' %}assets/img/image copy.png",
-    "{% static '' %}assets/img/image.png",
-    "{% static '' %}assets/img/gallery/image.png",
-    "{% static '' %}assets/img/gallery/image copy 3.png",
-    "{% static '' %}assets/img/gallery/image copy 4.png",
-    "{% static '' %}assets/img/gallery/image copy 5.png",
-    "{% static '' %}assets/img/gallery/image copy 7.png",
-
-
+    {% for rs in gallery %}
+      "{{ rs.image.url }}"{% if not forloop.last %},{% endif %}
+    {% endfor %}
   ];
 
   const galleryGrid = document.getElementById("galleryGrid");
 
-  // Gallery create dynamically
   images.forEach((src) => {
     const card = document.createElement("div");
     card.className =
@@ -338,7 +205,7 @@
       </div>
     `;
 
-    // Click event for popup
+    // Popup open
     card.addEventListener("click", () => {
       document.getElementById("popupImg").src = src;
       document.getElementById("popup").classList.remove("hidden");
@@ -347,20 +214,18 @@
     galleryGrid.appendChild(card);
   });
 
-  // Close popup
+  // Popup close
   document.getElementById("closePopup").addEventListener("click", () => {
     document.getElementById("popup").classList.add("hidden");
   });
 
-  // Close popup on outside click
   document.getElementById("popup").addEventListener("click", (e) => {
     if (e.target.id === "popup") {
       document.getElementById("popup").classList.add("hidden");
     }
   });
 </script>
- </gallery>
-<!-- Gallery Section End -->
+
 
 
 
