@@ -5,82 +5,68 @@
 
 
 {% block body %}
-<!--============================== Breadcumb ============================== -->
-<div class="breadcumb-wrapper " data-bg-src="{{product.image.url}}" style="height: 600px;">
-    <div class="container">
-        <div class="breadcumb-content">
-            <h1 class="breadcumb-title">{{product.title}}</h1>
-            <ul class="breadcumb-menu">
-                <li><a href="/">Home</a></li>
-                <li>Project</li>
-            </ul>
-        </div>
-    </div>
-</div>
 
-<!--============================== Project Area ==============================-->
 
- <!--============================== Photo Area ==============================-->
- <section class="space">
-    <div class="container">
-        <div class="title-area text-center mb-40">
-            <span class="sub-title">Photo</span>
-            <h2 class="sec-title">Let’s See Our Latest Photo</h2>
-        </div>
-        
-        <div class="row gallery-row filter-active">
-            <!-- Single Item -->
-            {% for i in product.images_set.all %}
-            <div class="col-md-6 col-xl-auto filter-item cat1">
-                <div class="project-box">
-                    <div class="project-box-img">
-                        <img src="{{i.image.url}}" style="width:385px;height:385px;" alt="project image">
-                    </div>
-                    <div class="project-box-content">
-                        <p class="project-subtitle">Deepak</p>
-                        <h3 class="box-title"><a>Complex</a></h3>
-                        <a href="{{i.image.url}}" class="gallery-btn popup-image"><i class="fa-regular fa-plus"></i></a>
-                    </div>
-                </div>
-            </div>    
-            {% endfor %}         
-        </div>           
-    </div>
-    <div class="container">
-        <div class="project-details">
-            <div class="page-img">
-                
-            </div>
-            <ul class="project-details-wrap">
-                
-            </ul>
-        </div>
-        <div class="row">
-            <div class="col-lg-8">
-                <div class="page-content style2 mb-40">
-                    <h3 class="h3 page-title">Product Overview</h3>
-                    <p class="sec-text mb-25" align="justify">{{product.description}}</p>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <aside class="sidebar-area style2 pt-0">
-                    <div class="widget widget_offer  " data-overlay="title" data-opacity="9" data-bg-src="{% static '' %}assets/img/bg/widget_bg_1.jpg">
-                        <div class="offer-banner">
-                            <div class="offer">
-                                <span class="sub-title">Contact for inquery</span>
-                                <h6 class="box-title">Need Help? We Are Here To Help You</h6>
-                                <a href="{% url "contactus" %}" class="th-btn style1">Get A Quote</a>
-                            </div>
-                        </div>
-                    </div>
-                </aside>
-            </div>
-        </div>
-        <div class="page-content style2">
-            {{product.detail |safe }}
-        </div>
-    </div>
+<!-- HERO SECTION -->
+<section class="relative bg-gray-900 text-white">
+  <!-- Background Image -->
+  <div class="absolute inset-0">
+    <img src="{% static '' %}assets/img/hero-windows.jpg" alt="Custom Windows" class="w-full h-full object-cover">
+    <div class="absolute inset-0 bg-black/60"></div> <!-- overlay -->
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10 py-28 text-center container mx-auto px-6 md:px-12 lg:px-20">
+    <!-- Breadcrumb -->
+    <nav class="text-sm mb-6 flex justify-center space-x-2 text-gray-300">
+      <a href="index.html" class="hover:text-yellow-400">Home</a>
+      <span>/</span>
+      <a href="services_details.html" class="hover:text-yellow-400">Services</a>
+      <span>/</span>
+      <span class="text-yellow-400 font-semibold">Custom Windows</span>
+    </nav>
+
+    <!-- Title -->
+    <h1 class="text-4xl md:text-6xl font-extrabold mb-4">Custom Windows</h1>
+    <p class="max-w-2xl mx-auto text-lg text-gray-200">
+      Tailor-made PVC & Aluminium windows designed for durability, style, and comfort.
+    </p>
+  </div>
 </section>
+
+
+  <!-- SERVICE DETAILS -->
+  <section class="py-20">
+    <div class="container mx-auto px-6 md:px-12 lg:px-20 grid lg:grid-cols-2 gap-12 items-center">
+
+      <!-- Image -->
+      <div>
+        <img src="{% static '' %}assets/img/product/Custom Windows.jpeg" alt="Custom Windows" class="rounded-2xl shadow-lg h-[450px]">
+      </div>
+
+      <!-- Content -->
+      <div>
+        <h2 class="text-3xl font-bold mb-6">About Custom Windows</h2>
+        <p class="text-gray-600 mb-6 leading-relaxed">
+          Our custom PVC & Aluminium windows are built to match your lifestyle and interiors. 
+          We ensure a perfect blend of modern aesthetics, noise reduction, and long-lasting durability.
+        </p>
+
+        <h3 class="text-xl font-semibold mb-4">Key Features</h3>
+        <ul class="list-disc pl-6 space-y-2 text-gray-700 mb-6">
+          <li>Energy-efficient designs</li>
+          <li>Soundproof & secure</li>
+          <li>Custom sizes, shapes, and colors</li>
+          <li>Durable materials with premium finish</li>
+        </ul>
+
+        <a href="contact.html" class="inline-block px-6 py-3 bg-indigo-600 text-white rounded-lg shadow hover:bg-indigo-700 transition">
+          <i class="fa-solid fa-phone mr-2"></i> Get a Quote
+        </a>
+      </div>
+    </div>
+  </section>
+
 
 
 

@@ -2,35 +2,52 @@
 {% block slider %}
 
 
-<!--============================== Hero Area ==============================-->
-<div class="th-hero-wrapper hero-3" id="hero">
-    <div class="swiper th-slider hero-slider-3" id="heroSlide3" data-slider-options='{"effect":"fade"}'>
-        <div class="swiper-wrapper">
-            {% for i in slider %}
-            <div class="swiper-slide">
-                <div class="hero-inner">
-                    <div class="th-hero-bg" data-bg-src="">
-                        <img src="{{i.image.url}}" alt="Hero Image" style="height: 650px;">
-                        <div class="hero-shape-1" data-ani="slideinleft" data-ani-delay="0.7s"><img src="{% static '' %}assets/img/hero/hero_overlay_3_1.png" style="height: 650px;" alt=""></div>
-                    </div>
-                    <div class="container">
-                        <div class="hero-style3">
-                            <div class="hero-meta">
-                            </div>
-                            <h1 class="hero-title" data-ani="slideinleft" data-ani-delay="0.4s">
-                                {{i.title}} <span class="hero-text">{{i.sub_title}}</span> </h1>
-                            <div class="btn-group" data-ani="slideinup" data-ani-delay="0.6s">
-                                <a href="#" class="th-btn style1 th-style th-icon">Discover More<i class="fa-regular fa-arrow-right ms-2"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-            
-        </div>
-        <button data-slider-prev="#heroSlide3" class="slider-arrow slider-prev"><i class="far fa-arrow-left"></i></button>
-        <button data-slider-next="#heroSlide3" class="slider-arrow slider-next"><i class="far fa-arrow-right"></i></button>
+<!-- ===== SLIDER START ===== -->
+<section class="relative w-full h-screen overflow-hidden ">
+  <!-- Slider Container -->
+  <div id="slider" class="flex transition-transform duration-700 h-full">
+    
+    <!-- Slide 1 -->
+    <div class="min-w-full h-full relative">
+      <img src="https://picsum.photos/1920/1080?random=1" alt="Slide 1" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center text-white text-center px-6">
+        <h2 class="text-5xl md:text-6xl font-extrabold mb-4 drop-shadow-lg">Premium Windows</h2>
+        <p class="text-lg md:text-2xl max-w-2xl">Strong • Stylish • Durable</p>
+      </div>
     </div>
-</div><br><br><br>
+
+    <!-- Slide 2 -->
+    <div class="min-w-full h-full relative">
+      <img src="https://picsum.photos/1920/1080?random=2" alt="Slide 2" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center text-white text-center px-6">
+        <h2 class="text-5xl md:text-6xl font-extrabold mb-4 drop-shadow-lg">Modern Designs</h2>
+        <p class="text-lg md:text-2xl max-w-2xl">Perfect fit for every space</p>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="min-w-full h-full relative">
+      <img src="https://picsum.photos/1920/1080?random=3" alt="Slide 3" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center text-white text-center px-6">
+        <h2 class="text-5xl md:text-6xl font-extrabold mb-4 drop-shadow-lg">Trusted Quality</h2>
+        <p class="text-lg md:text-2xl max-w-2xl">Made to last for years</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Navigation Arrows -->
+  <button id="prevBtn" class="absolute top-1/2 left-6 -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-80 text-white p-4 rounded-full transition">
+    <i class="fa-solid fa-chevron-left text-xl"></i>
+  </button>
+  <button id="nextBtn" class="absolute top-1/2 right-6 -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-80 text-white p-4 rounded-full transition">
+    <i class="fa-solid fa-chevron-right text-xl"></i>
+  </button>
+
+  <!-- Dots -->
+  <div id="dots" class="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3"></div>
+</section>
+<!-- ===== SLIDER END ===== -->
+
+
 {% endblock slider %}

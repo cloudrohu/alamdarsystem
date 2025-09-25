@@ -6,115 +6,121 @@
 
 {% block body %}
 {% for i in setting %}
-<!--============================== Breadcumb ============================== -->
-<div class="breadcumb-wrapper " data-bg-src="assets/img/bg/breadcumb-bg.jpg">
-    <div class="container">
-        <div class="breadcumb-content">
-            <h1 class="breadcumb-title">Contact Us</h1>
-            <ul class="breadcumb-menu">
-                <li><a href="home-company.html">Home</a></li>
-                <li>Contact</li>
-            </ul>
-        </div>
-    </div>
-</div>
+<br><br>
 
-<!--============================== Contact Area  ==============================-->
-<div class="space">
-    <div class="container">
-        <div class="row gy-40 gx-30">
-            <div class="col-xl-4 col-lg-6">
-                <div class="title-area mb-30">
-                    <h3 class="sec-title">Contact Information</h3>
-                </div>
-                <div class="contact-info-wrap">
-                    <div class="contact-info">
-                        <div class="contact-info_icon"><i class="fa-light fa-location-dot"></i></div>
-                        <div class="media-body">
-                            <p class="contact-info_label">Our Address</p>
-                            <a href="https://www.google.com/maps" class="contact-info_link">{{i.address}}</a>
-                        </div>
-                    </div>
-                    <div class="contact-info">
-                        <div class="contact-info_icon"><i class="fa-light fa-phone"></i></div>
-                        <div class="media-body">
-                            <p class="contact-info_label">Contact Number</p>
-                            <a href="tel:{{i.phone}}" class="contact-info_link">Mobile: {{i.phone}}</a>
-                            <a href="mailto:{{i.email}}" class="contact-info_link"> {{i.email}}</a>
-                        </div>
-                    </div>
-                    <div class="contact-info">
-                        <div class="contact-info_icon"><i class="fa-light fa-clock"></i></div>
-                        <div class="media-body">
-                            <p class="contact-info_label">Working Hours</p>
-                            <span class="contact-info_link">Monday - Saturday: 10:00 - 19:00</span>
-                            <span class="contact-info_link">Sunday: <span class="text-theme">Closed</span></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-8 col-lg-6">
-                <div class="contact-map">
-                    {{i.google_map | safe}}
-                </div>
-            </div>
-        </div>
+  <!-- ===== Breadcrumb ===== -->
+  <div class="bg-gradient-to-r from-indigo-600 to-blue-500 text-white py-4 px-6 shadow-md">
+    <div class="container mx-auto flex items-center space-x-2 text-sm">
+      <a href="/" class="hover:underline">Home</a>
+      <span>/</span>
+      <span class="font-semibold">Contact</span>
     </div>
-</div>
+  </div>
 
-<!--============================== Contact Area  ==============================-->
-<div class="space-bottom overflow-hidden">
-    <div class="container">
-        <div class="row gy-5">
-            <div class="col-lg-6">
-                <div class="">
-                    <div class="title-area mb-30">
-                        <span class="sub-title style1">Get In Touch</span>
-                        <h2 class="sec-title">Have An Upcoming Projects? Let’s Talk to Now!</h2>
-                    </div>
-                    <form action="mail.php" method="POST" class="contact-form2 style2 ajax-contact">
-                        <div class="row">
-                            <div class="form-group col-md-6">
-                                <input type="text" class="form-control" name="name" id="name" placeholder="Your Name">
-                                <i class="fal fa-user"></i>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <input type="email" class="form-control" name="email" id="email" placeholder="Email Address">
-                                <i class="fal fa-envelope"></i>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <input type="tel" class="form-control" name="number" id="number" placeholder="Phone Number">
-                                <i class="fal fa-phone"></i>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <select name="subject" id="subject" class="form-select nice-select">
-                                    <option value="" disabled selected hidden>Select Subjects</option>
-                                    <option value="Architect">Architect</option>
-                                    <option value="Construction">Construction</option>
-                                    <option value="Interior">Interior</option>
-                                    <option value="Real Estate">Real Estate</option>
-                                    <option value="Industry">Industry</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-12">
-                                <textarea name="message" id="message" cols="30" rows="3" class="form-control" placeholder="Your Message"></textarea>
-                                <i class="fal fa-pencil"></i>
-                            </div>
-                            <div class="form-btn col-12">
-                                <button class="th-btn th-radius2">Send Message<i class="fa-regular fa-arrow-right ms-2"></i></button>
-                            </div>
-                        </div>
-                        <p class="form-messages mb-0 mt-3"></p>
-                    </form>
-                </div>
+  <!-- ===== CONTACT SECTION ===== -->
+  <section class="py-20">
+    <div class="container mx-auto px-6 md:px-12 lg:px-20">
+
+      <!-- Heading -->
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">Let’s Connect</h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Got a project in mind? Reach out to us today and let’s build something amazing together.
+        </p>
+      </div>
+
+      <!-- Grid -->
+      <div class="grid gap-10 lg:grid-cols-3">
+
+        <!-- Contact Info -->
+        <div class="lg:col-span-1 space-y-6">
+          <!-- Card -->
+          <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl transition">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="p-4 bg-indigo-100 text-indigo-600 rounded-xl">
+                <i class="fa-solid fa-phone text-xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold">Call Us</h3>
             </div>
-            <div class="col-lg-6">
-                <div class="contact-image style2">
-                    <img src="assets/img/contact/contact-image.jpg" alt="">
-                </div>
+            <p class="text-gray-600 mb-2">Mon - Sat, 9:00 AM - 7:00 PM</p>
+            <a href="tel:+919898034466" class="font-semibold text-indigo-600 hover:underline">+91 9898 03 4466</a>
+          </div>
+
+          <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl transition">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="p-4 bg-indigo-100 text-indigo-600 rounded-xl">
+                <i class="fa-solid fa-envelope text-xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold">Email</h3>
             </div>
+            <p class="text-gray-600 mb-2">Drop us a line anytime</p>
+            <a href="mailto:info@alamdarwindows.com" class="font-semibold text-indigo-600 hover:underline">info@alamdarwindows.com</a>
+          </div>
+
+          <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl transition">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="p-4 bg-indigo-100 text-indigo-600 rounded-xl">
+                <i class="fa-solid fa-location-dot text-xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold">Office</h3>
+            </div>
+            <p class="text-gray-600">123 Business Street, Mumbai</p>
+          </div>
         </div>
+
+        <!-- Contact Form -->
+        <div class="lg:col-span-2">
+          <div class="bg-white rounded-2xl shadow-xl border border-gray-100 p-10 hover:shadow-2xl transition">
+            <form action="#" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <!-- Name -->
+              <div class="col-span-1">
+                <label for="name" class="block text-sm font-medium text-gray-700">Your Name</label>
+                <input type="text" id="name" name="name" required
+                  class="mt-2 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none">
+              </div>
+              <!-- Email -->
+              <div class="col-span-1">
+                <label for="email" class="block text-sm font-medium text-gray-700">Your Email</label>
+                <input type="email" id="email" name="email" required
+                  class="mt-2 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none">
+              </div>
+              <!-- Phone -->
+              <div class="col-span-1">
+                <label for="phone" class="block text-sm font-medium text-gray-700">Phone</label>
+                <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}"
+                  class="mt-2 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none">
+              </div>
+              <!-- Subject -->
+              <div class="col-span-1">
+                <label for="subject" class="block text-sm font-medium text-gray-700">Subject</label>
+                <input type="text" id="subject" name="subject"
+                  class="mt-2 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none">
+              </div>
+              <!-- Message -->
+              <div class="col-span-2">
+                <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                <textarea id="message" name="message" rows="6" required
+                  class="mt-2 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"></textarea>
+              </div>
+              <!-- Submit -->
+              <div class="col-span-2">
+                <button type="submit"
+                  class="w-full py-4 bg-gradient-to-r from-indigo-600 to-blue-500 text-white font-semibold rounded-lg shadow-md hover:from-indigo-700 hover:to-blue-600 hover:shadow-lg transition">
+                  <i class="fa-solid fa-paper-plane mr-2"></i> Send Message
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Map -->
+      <div class="mt-16 w-full h-[400px] rounded-2xl overflow-hidden shadow-lg">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.07144441048!2d72.8404703!3d19.1483497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b73fa1604375%3A0x315d30872a46b2f6!2sMakaan%20Hub!5e0!3m2!1sen!2sin!4v1751291622842!5m2!1sen!2sin"
+          width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
     </div>
-</div>
+  </section>
+
 {% endfor %}
 {% endblock body %}

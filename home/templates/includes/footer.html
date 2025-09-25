@@ -1,112 +1,73 @@
 <!-- footer-start -->
 {% load static %}
 {% for i in setting %}
-<!-- cta-area-start -->
-<!--============================== Footer Area ==============================-->
-<footer class="footer-wrapper bg-title footer-layout3">
-    <div class="container">
-        <div class="widget-area">
-            <div class="container">
-                <div class="row justify-content-between">
-                    <div class="col-md-6 col-lg-3">
-                        <div class="widget footer-widget">
-                            <div class="th-widget-about">
-                                <div class="about-logo">
-                                    <a href="/"><img src="{{i.logo.url}}" style="height: 80px;" alt="logo"></a>
-                                </div>
-                                <p class="about-text">Architecture & Construction services offer tailored solutions to meet the unique needs and specifications of each project.</p>
-                                <div class="th-social style2">
-                                    <a href="{{i.facebook}}" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="{{i.twitter}}" target="_blank"><i class="fab fa-twitter"></i></a>
-                                    <a href="{{i.youtube}}" target="_blank"><i class="fab fa-youtube"></i></a>
-                                    <a href="https://wa.me/+91{{i.whatsapp}}" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-auto">
-                        <div class="widget widget_nav_menu footer-widget">
-                            <h3 class="widget_title">Useful Links</h3>
-                            <div class="menu-all-pages-container">
-                                <ul class="menu">
-                                    <li><a href="{% url "aboutus" %}">About Us</a></li>
-                                    <li><a href="{% url "gallery" %}">Our Gallery</a></li>
-                                    <li><a href="#">Our Services</a></li>
-                                    <li><a href="#"> Our Team</a></li>
-                                    <li><a href="#">Contact Us</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-auto">
-                        <div class="widget widget_nav_menu footer-widget">
-                            <h3 class="widget_title">Our Services</h3>
-                            <div class="menu-all-pages-container">
-                                <ul class="menu">
-                                    <li><a href="#">Architectural</a></li>
-                                    <li><a href="#">Construction</a></li>
-                                    <li><a href="#">Development</a></li>
-                                    <li><a href="#">Building</a></li>
-                                    <li><a href="#">Renovation</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-auto">
-                        <div class="widget widget_nav_menu footer-widget">
-                            <h3 class="widget_title">Quick Info</h3>
-                            <div class="menu-all-pages-container">
-                                <ul class="menu">
-                                    <li><a href="#">Our Story</a></li>
-                                    <li><a href="#">Appointment</a></li>
-                                    <li><a href="#">Terms & Condition</a></li>
-                                    <li><a href="#">Get In Touch</a></li>
-                                    <li><a href="#">Project Showcase</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-auto">
-                        <div class="widget footer-widget">
-                            <h3 class="widget_title">Contact Us</h3>
-                            <div class="th-widget-about style2">
-                                <h4 class="footer-info-title">Address Location</h4>
-                                <p class="footer-info"><i class="fas fa-map-marker-alt"></i>{{i.location}}</p>
-                                <h4 class="footer-info-title">Contact Number</h4>
-                                <p class="footer-info"><i class="fa-sharp fa-solid fa-phone"></i>
-                                    <span>
-                                        <a class="text-inherit" href="tel:{{i.phone}}"> {{i.phone}} </a>
-                                        <a class="text-inherit" href="{{i.email}}">{{i.email}}</a>
-                                    </span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-xl-8">
-                        <div class="form-group newsletter-form style3">
-                            <input class="form-control" type="email" placeholder="Enter Your Email...." required="">
-                            <button type="submit" class="newsletter-btn"><i class="fa-sharp fa-regular fa-paper-plane"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="copyright-wrap text-center">
-        <p class="copyright-text">Copyright <i class="fal fa-copyright"></i> <a href="/">{{i.copy_right}}</a>. All Rights Reserved.</p>
-    </div>
-</footer>
 
-<!--********************************Code End  Here ******************************** -->
-<!-- Scroll To Top -->
-<div class="scroll-top">
-    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 307.919;">
-        </path>
-    </svg>
-</div>
+
+<!-- ===== FOOTER START ===== -->
+<footer class="bg-gray-900 text-gray-300 pt-16 pb-8">
+  <div class="container mx-auto px-6 md:px-12 lg:px-20">
+
+    <!-- Grid -->
+    <div class="grid gap-10 md:grid-cols-3">
+
+      <!-- Logo + About -->
+      <div>
+        <a href="#" class="flex items-center gap-3 mb-6">
+          <!-- Logo Icon -->
+        <img src="{% static '' %}assets/img/logo/image.png" alt="" class="">
+        </a>
+        <p class="text-gray-400">
+          Delivering high-quality windows, doors, and interiors with modern design and durability.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h3 class="text-white text-lg font-semibold mb-6">Quick Links</h3>
+        <ul class="space-y-3">
+          <li><a href="#about" class="hover:text-indigo-400">About Us</a></li>
+          <li><a href="#products" class="hover:text-indigo-400">Products</a></li>
+          <li><a href="#services" class="hover:text-indigo-400">Services</a></li>
+          <li><a href="#gallery" class="hover:text-indigo-400">Gallery</a></li>
+          <li><a href="#contact" class="hover:text-indigo-400">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div>
+        <h3 class="text-white text-lg font-semibold mb-6">Contact Info</h3>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3">
+            <i class="fa-solid fa-phone text-indigo-400 mt-1"></i>
+            <a href="tel:+919898034466" class="hover:text-indigo-400">+91 9898 03 4466</a>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fa-solid fa-envelope text-indigo-400 mt-1"></i>
+            <a href="mailto:info@alamdarwindows.com" class="hover:text-indigo-400">info@alamdarwindows.com</a>
+          </li>
+          <li class="flex items-start gap-3">
+            <i class="fa-solid fa-location-dot text-indigo-400 mt-1"></i>
+            <span>123 Business Street, Mumbai</span>
+          </li>
+        </ul>
+        <div class="flex gap-5 mt-6">
+          <a href="#" class="text-gray-400 hover:text-indigo-400"><i class="fa-brands fa-facebook-f text-xl"></i></a>
+          <a href="#" class="text-gray-400 hover:text-indigo-400"><i class="fa-brands fa-instagram text-xl"></i></a>
+          <a href="#" class="text-gray-400 hover:text-indigo-400"><i class="fa-brands fa-linkedin-in text-xl"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="mt-12 border-t border-gray-700 pt-6 text-center text-gray-400 text-sm">
+      © <span id="year"></span> Alamdar System Windows. All Rights Reserved.
+    </div>
+  </div>
+</footer>
+<!-- ===== FOOTER END ===== -->
+
+
+
 {% endfor %}
 <!-- footer-end -->
 

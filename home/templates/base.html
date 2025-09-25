@@ -2,61 +2,42 @@
 {% load static %}
 {% for rs in setting %}
 <html class="no-js" lang="zxx">
+
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{{rs.title}}</title>
-    <meta name="description" content="{{rs.description}}">
-    <meta name="keywords" content="{{rs.keywords}}">
-    <meta name="robots" content="INDEX,FOLLOW">
-
-    <!-- Mobile Specific Metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Favicons - Place favicon.ico in the root directory -->
-    <link rel="apple-touch-icon" sizes="57x57" href="{% static '' %}assets/img/favicons/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="{% static '' %}assets/img/favicons/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="{% static '' %}assets/img/favicons/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="{% static '' %}assets/img/favicons/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="{% static '' %}assets/img/favicons/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="{% static '' %}assets/img/favicons/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="{% static '' %}assets/img/favicons/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="{% static '' %}assets/img/favicons/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static '' %}assets/img/favicons/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="{% static '' %}assets/img/favicons/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static '' %}assets/img/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="{% static '' %}assets/img/favicons/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static '' %}assets/img/favicons/favicon-16x16.png">
-    <link rel="manifest" href="{% static '' %}assets/img/favicons/manifest.json">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="{% static '' %}assets/img/favicons/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">
-
-    <!--============================== Google Fonts ============================== -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
-
-    <!--============================== All CSS File ============================== -->
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="{% static '' %}assets/css/bootstrap.min.css">
-    <!-- Fontawesome Icon -->
-    <link rel="stylesheet" href="{% static '' %}assets/css/fontawesome.min.css">
-    <!-- Magnific Popup -->
-    <link rel="stylesheet" href="{% static '' %}assets/css/magnific-popup.min.css">
-    <!-- Swiper css -->
-    <link rel="stylesheet" href="{% static '' %}assets/css/swiper-bundle.min.css">
-    <!-- Theme Custom CSS -->
-    <link rel="stylesheet" href="{% static '' %}assets/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{% static '' %}assets/style.css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+            html {
+                scroll-behavior: smooth;
+            }
+            .nav-link {
+                transition: all .18s ease-in-out;
+            }
+            .nav-link:hover {
+                transform: translateY(-2px);
+                background-color: rgba(79,70,229,0.06);
+                border-radius: .375rem;
+                color: #4f46e5;
+            }
+            .drawer-link {
+                transition: all .2s ease-in-out;
+            }
+            .drawer-link:hover{
+                background-color: rgba(79,70,229,0.1);
+                color:#4f46e5;
+                transform: translateX(4px);
+            }
+    </style>
+    <title>Alamdar System Windows</title>
 </head>
+
 <body>
     {% include "includes/header.html" %}
-    <!-- offcanvas area start -->
-    
-    
-    <!-- offcanvas area end -->      
-    <div class="body-overlay"></div>
-    <!-- offcanvas area end -->
+
     
     {% block slider %}{% endblock slider %}
     
@@ -64,37 +45,61 @@
     
     
     {% include "includes/footer.html" %}
-    
 
-    <!--============================== All Js File ============================== -->
-    <!-- Jquery -->
-    <script src="{% static '' %}assets/js/vendor/jquery-3.6.0.min.js"></script>
-    <!-- Swiper Js -->
-    <script src="{% static '' %}assets/js/swiper-bundle.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="{% static '' %}assets/js/bootstrap.min.js"></script>
-    <!-- Magnific Popup -->
-    <script src="{% static '' %}assets/js/jquery.magnific-popup.min.js"></script>
-    <!-- Counter Up -->
-    <script src="{% static '' %}assets/js/jquery.counterup.min.js"></script>
-    <!-- Range Slider -->
-    <script src="{% static '' %}assets/js/jquery-ui.min.js"></script>
-    <!-- imagesloaded -->
-    <script src="{% static '' %}assets/js/imagesloaded.pkgd.min.js"></script>
-    <!-- isotope -->
-    <script src="{% static '' %}assets/js/isotope.pkgd.min.js"></script>
-    <!-- gsap -->
-    <script src="{% static '' %}assets/js/gsap.min.js"></script>
-    <!-- ScrollTrigger -->
-    <script src="{% static '' %}assets/js/ScrollTrigger.min.js"></script>
-    <!-- circle-progress -->
-    <script src="{% static '' %}assets/js/circle-progress.js"></script>
-    <!-- nice select -->
-    <script src="{% static '' %}assets/js/nice-select.min.js"></script>
-    <!-- smooth-scroll -->
-    <script src="{% static '' %}assets/js/smooth-scroll.js"></script>
-    <!-- Main Js File -->
-    <script src="{% static '' %}assets/js/main.js"></script>
+
+
+
+<!-- ===== FLOOTING START HERE CTA BTNs ===== -->
+<flooting>
+  <!-- Floating Cube/Box -->
+  <div id="fabBox"
+    class=" md:block fixed right-0 top-1/3 z-50 w-56 shadow-2xl transform translate-x-full opacity-0 transition-all duration-700 origin-right scale-0">
+
+    <!-- Cube Stage -->
+    <div id="cube" class="absolute inset-0 flex items-center justify-center">
+      <div class="w-20 h-20 bg-gradient-to-br from-blue-400 to-indigo-600 cube-glow rounded-lg"></div>
+    </div>
+
+    <!-- Real Box Content -->
+    <div id="boxContent" class="hidden bg-white rounded-l-lg overflow-hidden">
+      <!-- Header -->
+      <div class="flex justify-between items-center bg-indigo-600 text-white px-4 py-2">
+        <h2 class="font-semibold">Quick Connect</h2>
+        <button id="closeBox" class="hover:text-gray-200 transition-transform hover:rotate-90">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <!-- Content Buttons -->
+      <div class="p-4 flex flex-col gap-3">
+        <!-- Call Now Button -->
+        <a id="callBtn" href="tel:+9198xxxxxxxx"
+          class="flex flex-col items-center gap-1 bg-blue-600 text-white px-6 py-4 rounded-lg shadow-lg text-center">
+          <div class="flex items-center gap-2 text-lg font-semibold">
+            <i class="fa-solid fa-phone"></i> <span>Call Now</span>
+          </div>
+          <small id="callStatus" class="text-xs font-semibold"></small>
+          <small id="officeHours" class="text-[11px] text-gray-200"></small>
+        </a>
+
+        <a href="https://wa.me/9198xxxxxxxx" target="_blank"
+          class="fab-item flex items-center gap-2 bg-green-500 text-white px-4 py-3 rounded-lg shadow-lg">
+          <i class="fa-brands fa-whatsapp"></i> WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reopen Button (Desktop only) -->
+  <button id="openBox"
+    class="hidden md:block fixed right-4 top-2/3 z-50 bg-indigo-600 text-white px-3 py-2 rounded-full shadow-lg hover:rotate-12 transition">
+    <i class="fa-solid fa-gift"></i>
+  </button>
+</flooting>
+<!-- ===== FLOOTING END HERE CTA BTNs ===== --> 
+
+
+<script src="{% static '' %}assets/js/scripts.js"></script>
 
 </body>
 
