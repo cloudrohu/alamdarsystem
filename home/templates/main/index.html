@@ -78,27 +78,32 @@
     <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
       {% for rs in product %}
 
-      <!-- Product Card Example -->
-      <div class="bg-gray-50 rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden">
-        <img src="{{rs.image.url}}" alt="Product 1" class="w-full h-56 object-cover">
-        <div class="p-6">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">{{rs.title}}</h3>
-          <p class="text-gray-600 mb-4">
-            {{rs.description |truncatechars:450}}
-          </p>
-          <!-- Features -->
-          <ul class="space-y-2 mb-6 text-gray-700">
-            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-indigo-600 mt-1"></i> Noise reduction up to <span class="font-semibold">40%</span></li>
-            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-indigo-600 mt-1"></i> Tested for <span class="font-semibold">all weather conditions</span></li>
-            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-indigo-600 mt-1"></i> 15+ modern frame colors available</li>
-          </ul>
-          <!-- Shiny Button -->
-          <a href="{{rs.get_absolute_url}}"
-            class="inline-block w-full text-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white px-5 py-2 rounded-lg shadow-md hover:shadow-xl transition font-medium animate-pulse">
-            View Details
-          </a>
-        </div>
-      </div>
+    <!-- Product Card -->
+<div class="bg-gray-50 rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden">
+  <img src="{{ rs.image.url }}" alt="{{ rs.title }}" class="w-full h-56 object-cover">
+  
+  <div class="p-6">
+    <!-- Title -->
+    <h3 class="text-xl font-semibold text-gray-800 mb-2">{{ rs.title }}</h3>
+    
+    <!-- Description -->
+    <p class="text-gray-600 mb-4">
+      {{ rs.description|truncatechars:150 }}
+    </p>
+
+    <!-- ✨ USP Line -->
+    <div class="bg-indigo-50 text-indigo-700 px-4 py-2 rounded-lg mb-6 text-sm font-medium">
+      {{rs.usp_line}}
+    </div>
+
+    <!-- CTA Button -->
+    <a href="{{ rs.get_absolute_url }}"
+      class="inline-block w-full text-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white px-5 py-2 rounded-lg shadow-md hover:shadow-xl transition font-medium">
+      View Details
+    </a>
+  </div>
+</div>
+
 
       {% endfor %}
 
@@ -145,10 +150,23 @@
         </div>
       {% endfor %}
  
+  
 
     </div>
+
+
   </div>
+
+      <!-- See All Button -->
+    <div class="text-center mt-14">
+      <a href="{% url "service" %}"
+        class="inline-block bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white px-12 py-4 rounded-full shadow-lg hover:shadow-2xl font-semibold text-lg animate-pulse">
+        See All Services →
+      </a>
+    </div>
+
 </section>
+
 <!-- SERVICES END HERE -->
 
 
@@ -177,54 +195,59 @@
   </div>
 </section>
 
-<!-- Popup Modal -->
-<div id="popup" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center hidden z-50">
-  <span id="closePopup" class="absolute top-6 right-8 text-white text-4xl cursor-pointer">&times;</span>
-  <img id="popupImg" src="" alt="Popup Image" class="max-h-[80%] max-w-[90%] rounded-lg shadow-lg">
-</div>
+  <!-- Popup Modal -->
+  <div id="popup" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center hidden z-50">
+    <span id="closePopup" class="absolute top-6 right-8 text-white text-4xl cursor-pointer">&times;</span>
+    <img id="popupImg" src="" alt="Popup Image" class="max-h-[80%] max-w-[90%] rounded-lg shadow-lg">
+  </div>
 
-<script>
-  // ✅ Fixed: Comma issue removed
-  const images = [
-    {% for rs in gallery %}
-      "{{ rs.image.url }}"{% if not forloop.last %},{% endif %}
-    {% endfor %}
-  ];
+  <script>
+    // ✅ Fixed: Comma issue removed
+    const images = [
+      {% for rs in gallery %}
+        "{{ rs.image.url }}"{% if not forloop.last %},{% endif %}
+      {% endfor %}
+    ];
 
-  const galleryGrid = document.getElementById("galleryGrid");
+    const galleryGrid = document.getElementById("galleryGrid");
 
-  images.forEach((src) => {
-    const card = document.createElement("div");
-    card.className =
-      "relative group cursor-pointer aspect-square overflow-hidden rounded-xl shadow-md";
+    images.forEach((src) => {
+      const card = document.createElement("div");
+      card.className =
+        "relative group cursor-pointer aspect-square overflow-hidden rounded-xl shadow-md";
 
-    card.innerHTML = `
-      <img src="${src}" alt="Gallery Image" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
-      <div class="absolute inset-0 bg-blue-600 bg-opacity-0 group-hover:bg-opacity-90 transition duration-500 flex items-center justify-center">
-        <i class="fa-solid fa-plus text-white text-5xl transform scale-0 group-hover:scale-100 group-hover:rotate-180 transition duration-500 ease-in-out"></i>
-      </div>
-    `;
+      card.innerHTML = `
+        <img src="${src}" alt="Gallery Image" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+        <div class="absolute inset-0 bg-blue-600 bg-opacity-0 group-hover:bg-opacity-90 transition duration-500 flex items-center justify-center">
+          <i class="fa-solid fa-plus text-white text-5xl transform scale-0 group-hover:scale-100 group-hover:rotate-180 transition duration-500 ease-in-out"></i>
+        </div>
+      `;
 
-    // Popup open
-    card.addEventListener("click", () => {
-      document.getElementById("popupImg").src = src;
-      document.getElementById("popup").classList.remove("hidden");
+      // Popup open
+      card.addEventListener("click", () => {
+        document.getElementById("popupImg").src = src;
+        document.getElementById("popup").classList.remove("hidden");
+      });
+
+      galleryGrid.appendChild(card);
     });
 
-    galleryGrid.appendChild(card);
-  });
-
-  // Popup close
-  document.getElementById("closePopup").addEventListener("click", () => {
-    document.getElementById("popup").classList.add("hidden");
-  });
-
-  document.getElementById("popup").addEventListener("click", (e) => {
-    if (e.target.id === "popup") {
+    // Popup close
+    document.getElementById("closePopup").addEventListener("click", () => {
       document.getElementById("popup").classList.add("hidden");
-    }
-  });
-</script>
+    });
+
+    document.getElementById("popup").addEventListener("click", (e) => {
+      if (e.target.id === "popup") {
+        document.getElementById("popup").classList.add("hidden");
+      }
+    });
+  </script>
+
+<!-- Gallery Section End-->
+
+
+
 
 
 
@@ -532,11 +555,13 @@
           
   <br>
 
-<section id="map" class="w-full">
-  <div class="w-full h-[600px]">
-    {{ rs.google_map|safe }}
-  </div>
+  <section id="map" class="w-full">
+    <div class="w-full h-[600px]">
+      {{ rs.google_map|safe }}
+    </div>
+  </section>
 </section>
+
 <!-- ===== GOOGLE MAP SECTION END ===== -->
 
 

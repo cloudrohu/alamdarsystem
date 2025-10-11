@@ -9,7 +9,7 @@
 
   <!-- ===== TOP CONTACT BAR ===== -->
   <div class="bg-gray-50 border-b text-sm text-gray-600">
-    <div class="container mx-auto px-4 py-2 flex items-center justify-between">
+    <div class="container-fluid mx-auto px-4 py-2 flex items-center justify-between">
       <div class="flex items-center gap-6">
         <!-- Phone -->
         <a href="tel:+91{{i.phone}}" class="flex items-center gap-2 hover:text-indigo-600">
@@ -23,16 +23,16 @@
         </a>
       </div>
       <div class="flex items-center gap-4">
-        <a href="#" class="hover:text-indigo-600"><i class="fa-brands fa-facebook-f"></i></a>
-        <a href="#" class="hover:text-indigo-600"><i class="fa-brands fa-instagram"></i></a>
-        <a href="#" class="hover:text-indigo-600"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="{{rs.facebook}}" class="hover:text-indigo-600"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="{{rs.instagram}}" class="hover:text-indigo-600"><i class="fa-brands fa-instagram"></i></a>
+        <a href="{{rs.twitter}}" class="hover:text-indigo-600"><i class="fa-brands fa-twitter"></i></a>
       </div>
     </div>
   </div>
 
   <!-- ===== HEADER ===== -->
   <header class="bg-white shadow-md">
-    <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+    <div class="container-fluid mx-auto px-4 py-3 flex items-center justify-between">
 
       <!-- Logo -->
       <a href="/" class="flex items-center gap-3">
@@ -54,9 +54,73 @@
       <button id="menuBtn" class="lg:hidden p-2 border rounded">
         <i class="fa-solid fa-bars text-xl"></i>
       </button>
+      <!-- ===== MOBILE SIDEBAR ===== -->
+  <div id="sidebar" class="fixed inset-0 z-50 hidden">
+    <!-- overlay -->
+    <div id="overlay" class="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"></div>
+    <!-- drawer -->
+    <div class="absolute top-0 left-0 w-72 h-full bg-gradient-to-b from-white to-gray-50 shadow-2xl transform -translate-x-full transition-transform duration-300 rounded-r-xl" id="drawer">
+      <!-- Profile Section -->
+      <div class="flex flex-col items-center py-6 border-b bg-gray-100 rounded-tr-xl">
+        <img src="{{i.logo.url}}" alt="Logo" class="h-18 w-20 rounded-full shadow-md">
+      </div>
+
+      <!-- Menu Header -->
+      <div class="flex items-center justify-between px-4 py-4 border-b bg-indigo-600 text-white">
+        <h2 class="font-bold text-lg flex items-center gap-2"><i class="fa-solid fa-bars"></i> Menu</h2>
+        <button id="closeBtn" class="p-2 hover:bg-indigo-700 rounded">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <!-- Menu Links -->
+      <nav class="flex flex-col font-medium py-4">
+        <a href="/" class="drawer-link flex items-center gap-3 border-b px-5 py-3 text-gray-700"><i class="fa-solid fa-house"></i><span>Home</span></a>
+        <a href="{% url 'product' %}" class="drawer-link flex items-center gap-3 border-b px-5 py-3 text-gray-700"><i class="fa-solid fa-house"></i><span>Products</span></a>
+        <a href="{% url 'aboutus' %}" class="drawer-link flex items-center gap-3 border-b px-5 py-3 text-gray-700"><i class="fa-solid fa-circle-info"></i><span>About</span></a>
+        <a href="{% url 'service' %}" class="drawer-link flex items-center gap-3 border-b px-5 py-3 text-gray-700"><i class="fa-solid fa-briefcase"></i><span>Services</span></a>
+        <a href="{% url 'gallery' %}" class="drawer-link flex items-center gap-3 border-b px-5 py-3 text-gray-700"><i class="fa-solid fa-images"></i><span>Gallery</span></a>
+        <a href="/#reviews" class="drawer-link flex items-center gap-3 border-b px-5 py-3 text-gray-700"><i class="fa-solid fa-star"></i><span>Reviews</span></a>
+        <a href="{% url 'contactus' %}" class="drawer-link flex items-center gap-3 border-b px-5 py-3 text-gray-700"><i class="fa-solid fa-phone"></i><span>Contact</span></a>
+        <a href="#" class="mt-4 mx-4 bg-indigo-600 text-white text-center py-3 rounded-md hover:bg-indigo-700 transition"><i class="fa-solid fa-envelope-open-text mr-2"></i>Get Quote</a>
+      </nav>
     </div>
+      </div>
   </header>
 </div>
 
+  <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const menuBtn = document.getElementById("menuBtn");
+        const sidebar = document.getElementById("sidebar");
+        const drawer = document.getElementById("drawer");
+        const closeBtn = document.getElementById("closeBtn");
+        const overlay = document.getElementById("overlay");
+
+        // Open Sidebar
+        menuBtn.addEventListener("click", () => {
+        sidebar.classList.remove("hidden");
+        setTimeout(() => {
+            drawer.classList.remove("-translate-x-full");
+        }, 50);
+        });
+
+        // Close Sidebar function
+        function closeSidebar() {
+        drawer.classList.add("-translate-x-full");
+        setTimeout(() => {
+            sidebar.classList.add("hidden");
+        }, 300); // match transition duration
+        }
+
+        // Close with closeBtn
+        closeBtn.addEventListener("click", closeSidebar);
+
+        // Close with overlay
+        overlay.addEventListener("click", closeSidebar);
+        });
+
+
+  </script>
 
 {% endfor %}

@@ -5,112 +5,66 @@
 
 
 {% block body %}
-  <!-- HERO BANNER -->
-  <section class="relative bg-gradient-to-r from-indigo-700 via-indigo-800 to-indigo-900 text-white py-28">
-    <div class="container mx-auto px-6 md:px-12 lg:px-20 text-center">
-      <h1 class="text-5xl font-extrabold mb-4">Our Products</h1>
-      <p class="max-w-2xl mx-auto text-lg text-indigo-100">
-        Explore our complete range of premium windows, doors, partitions, and interiors designed for style & durability.
-      </p>
-    </div>
-    <div class="absolute inset-0 bg-black/30"></div>
-  </section>
-
-  <!-- FILTER TABS -->
-  <div class="container mx-auto px-6 md:px-12 lg:px-20 -mt-10 relative z-10">
-    <div class="bg-white shadow-lg rounded-xl p-4 flex flex-wrap justify-center gap-4">
-      <button class="filter-btn px-5 py-2 bg-indigo-600 text-white rounded-lg font-semibold shadow hover:bg-indigo-700 transition" data-category="all">All</button>
-      <button class="filter-btn px-5 py-2 bg-gray-100 text-gray-700 rounded-lg font-semibold hover:bg-indigo-50 transition" data-category="windows">Windows</button>
-      <button class="filter-btn px-5 py-2 bg-gray-100 text-gray-700 rounded-lg font-semibold hover:bg-indigo-50 transition" data-category="doors">Doors</button>
-      <button class="filter-btn px-5 py-2 bg-gray-100 text-gray-700 rounded-lg font-semibold hover:bg-indigo-50 transition" data-category="interiors">Interiors</button>
-    </div>
+ <!-- 🌟 HERO SECTION -->
+<section class="relative h-[45vh] flex items-center justify-center">
+  <img src="https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg" 
+       alt="Product Banner" 
+       class="absolute inset-0 w-full h-full object-cover">
+  <div class="absolute inset-0 bg-black/60"></div>
+  <div class="relative z-10 text-center text-white px-4">
+    <h1 class="text-4xl md:text-5xl font-bold mb-3">Our Premium Product Collection</h1>
+    <p class="text-indigo-200 max-w-2xl mx-auto">
+      Explore our exclusive range of aluminium & uPVC doors, windows and glass solutions designed to redefine modern living.
+    </p>
   </div>
+</section>
 
-  <!-- PRODUCTS GRID -->
-  <section class="py-20">
-    <div class="container mx-auto px-6 md:px-12 lg:px-20">
-      <div id="productGrid" class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
 
-        <!-- Product Card -->
-        <div class="product-card bg-white rounded-2xl shadow-md hover:shadow-2xl transition transform hover:-translate-y-2 overflow-hidden" data-category="windows">
-          <div class="relative group">
-            <img src="{% static '' %}assets/img/product/Custom Windows.jpeg" alt="Custom Windows" class="w-full h-56 object-cover group-hover:scale-105 transition duration-500">
-            <a href="services_details.html#custom-windows" class="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition">
-              <span class="px-5 py-2 bg-yellow-400 text-gray-900 rounded-lg font-semibold shadow">View Details</span>
-            </a>
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">Custom Windows</h3>
-            <p class="text-gray-600 text-sm">Tailor-made PVC & Aluminium windows designed for style and durability.</p>
-          </div>
+
+<!-- 🛍️ PRODUCT GRID SECTION -->
+<section class="py-16">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+
+    {% for product in product %}
+      <div class="product-card bg-white rounded-2xl shadow hover:shadow-2xl transition overflow-hidden group">
+        <div class="overflow-hidden">
+          <img src="{{product.image.url}}" alt="Product 1" class="w-full h-56 object-cover transition-transform duration-500">
         </div>
-
-        <div class="product-card bg-white rounded-2xl shadow-md hover:shadow-2xl transition transform hover:-translate-y-2 overflow-hidden" data-category="doors">
-          <div class="relative group">
-            <img src="{% static '' %}assets/img/product/Sliding & Folding Doors.jpeg" alt="Sliding Doors" class="w-full h-56 object-cover group-hover:scale-105 transition duration-500">
-            <a href="services_details.html#sliding-doors" class="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition">
-              <span class="px-5 py-2 bg-yellow-400 text-gray-900 rounded-lg font-semibold shadow">View Details</span>
-            </a>
+        <div class="p-5 flex flex-col justify-between h-[220px]">
+          <div>
+            <h3 class="text-lg font-semibold mb-2 group-hover:text-indigo-600 transition">{{product.title}}</h3>
+            <p class="text-gray-600 text-sm mb-4">
+              {{product.description|truncatechars:70}}
+            </p>
           </div>
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">Sliding & Folding Doors</h3>
-            <p class="text-gray-600 text-sm">Elegant, space-saving sliding and folding doors for modern spaces.</p>
-          </div>
+          <a href="#" class="block text-center bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-2 rounded-lg font-medium hover:shadow-lg transition">
+            View Details
+          </a>
         </div>
-
-        <div class="product-card bg-white rounded-2xl shadow-md hover:shadow-2xl transition transform hover:-translate-y-2 overflow-hidden" data-category="windows">
-          <div class="relative group">
-            <img src="{% static '' %}assets/img/product/Glass Partitions.jpeg" alt="Glass Partitions" class="w-full h-60 object-cover group-hover:scale-105 transition duration-500">
-            <a href="services_details.html" class="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition">
-              <span class="px-5 py-2 bg-yellow-400 text-gray-900 rounded-lg font-semibold shadow">View Details</span>
-            </a>
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">Glass Partitions</h3>
-            <p class="text-gray-600 text-sm">Stylish glass partitions for offices, conference rooms, and interiors.</p>
-          </div>
-        </div>
-
-        <div class="product-card bg-white rounded-2xl shadow-md hover:shadow-2xl transition transform hover:-translate-y-2 overflow-hidden" data-category="interiors">
-          <div class="relative group">
-            <img src="{% static '' %}assets/img/product4.jpg" alt="Commercial Interiors" class="w-full h-56 object-cover group-hover:scale-105 transition duration-500">
-            <a href="services_details.html#commercial-interiors" class="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition">
-              <span class="px-5 py-2 bg-yellow-400 text-gray-900 rounded-lg font-semibold shadow">View Details</span>
-            </a>
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">Commercial Interiors</h3>
-            <p class="text-gray-600 text-sm">End-to-end interior solutions designed for offices & businesses.</p>
-          </div>
-        </div>
-
-        <div class="product-card bg-white rounded-2xl shadow-md hover:shadow-2xl transition transform hover:-translate-y-2 overflow-hidden" data-category="interiors">
-          <div class="relative group">
-            <img src="{% static '' %}assets/img/product5.jpg" alt="Residential Interiors" class="w-full h-56 object-cover group-hover:scale-105 transition duration-500">
-            <a href="services_details.html#residential-interiors" class="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition">
-              <span class="px-5 py-2 bg-yellow-400 text-gray-900 rounded-lg font-semibold shadow">View Details</span>
-            </a>
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">Residential Interiors</h3>
-            <p class="text-gray-600 text-sm">Beautifully designed residential interiors crafted for elegance.</p>
-          </div>
-        </div>
-
-        <div class="product-card bg-white rounded-2xl shadow-md hover:shadow-2xl transition transform hover:-translate-y-2 overflow-hidden" data-category="doors">
-          <div class="relative group">
-            <img src="{% static '' %}assets/img/product6.jpg" alt="Installation & Support" class="w-full h-56 object-cover group-hover:scale-105 transition duration-500">
-            <a href="services_details.html#installation-support" class="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition">
-              <span class="px-5 py-2 bg-yellow-400 text-gray-900 rounded-lg font-semibold shadow">View Details</span>
-            </a>
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2">Installation & Support</h3>
-            <p class="text-gray-600 text-sm">Expert installation & post-installation support services.</p>
-          </div>
-        </div>
-
       </div>
+      {% endfor %}
+
+      <!-- 👇 Add more cards to simulate pagination -->
+
     </div>
-  </section>
+
+    <!-- 📄 PAGINATION -->
+    <div class="flex justify-center items-center mt-12">
+      <nav class="inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+        <a href="#" class="px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700">
+          <i class="fa-solid fa-chevron-left"></i>
+        </a>
+        <a href="#" class="px-3 py-2 leading-tight text-white bg-indigo-600 border border-gray-300 hover:bg-indigo-700">1</a>
+        <a href="#" class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">2</a>
+        <a href="#" class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">3</a>
+        <a href="#" class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700">
+          <i class="fa-solid fa-chevron-right"></i>
+        </a>
+      </nav>
+    </div>
+
+  </div>
+</section>
+
 {% endblock body %}

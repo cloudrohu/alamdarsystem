@@ -7,67 +7,32 @@
 {% block body %}
 
 
-<!-- HERO SECTION -->
-<section class="relative bg-gray-900 text-white">
-  <!-- Background Image -->
-  <div class="absolute inset-0">
-    <img src="{% static '' %}assets/img/hero-windows.jpg" alt="Custom Windows" class="w-full h-full object-cover">
-    <div class="absolute inset-0 bg-black/60"></div> <!-- overlay -->
-  </div>
+<!-- 🌟 1. HERO SECTION -->
 
-  <!-- Content -->
-  <div class="relative z-10 py-28 text-center container mx-auto px-6 md:px-12 lg:px-20">
-    <!-- Breadcrumb -->
-    <nav class="text-sm mb-6 flex justify-center space-x-2 text-gray-300">
-      <a href="index.html" class="hover:text-yellow-400">Home</a>
-      <span>/</span>
-      <a href="services_details.html" class="hover:text-yellow-400">Services</a>
-      <span>/</span>
-      <span class="text-yellow-400 font-semibold">Custom Windows</span>
-    </nav>
-
-    <!-- Title -->
-    <h1 class="text-4xl md:text-6xl font-extrabold mb-4">Custom Windows</h1>
-    <p class="max-w-2xl mx-auto text-lg text-gray-200">
-      Tailor-made PVC & Aluminium windows designed for durability, style, and comfort.
+<section class="relative h-[60vh] flex items-center justify-center">
+  <img src="{{product.image.url}}" alt="Product Banner" class="absolute inset-0 w-full h-full object-cover">
+  <div class="absolute inset-0 bg-black/50"></div>
+  <div class="relative z-10 text-center text-white px-4">
+    <h1 class="text-4xl md:text-6xl font-bold mb-3">{{product.title}}</h1>
+    <p class="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto">
+      
     </p>
   </div>
 </section>
 
-
-  <!-- SERVICE DETAILS -->
-  <section class="py-20">
-    <div class="container mx-auto px-6 md:px-12 lg:px-20 grid lg:grid-cols-2 gap-12 items-center">
-
-      <!-- Image -->
-      <div>
-        <img src="{% static '' %}assets/img/product/Custom Windows.jpeg" alt="Custom Windows" class="rounded-2xl shadow-lg h-[450px]">
-      </div>
-
-      <!-- Content -->
-      <div>
-        <h2 class="text-3xl font-bold mb-6">About Custom Windows</h2>
-        <p class="text-gray-600 mb-6 leading-relaxed">
-          Our custom PVC & Aluminium windows are built to match your lifestyle and interiors. 
-          We ensure a perfect blend of modern aesthetics, noise reduction, and long-lasting durability.
-        </p>
-
-        <h3 class="text-xl font-semibold mb-4">Key Features</h3>
-        <ul class="list-disc pl-6 space-y-2 text-gray-700 mb-6">
-          <li>Energy-efficient designs</li>
-          <li>Soundproof & secure</li>
-          <li>Custom sizes, shapes, and colors</li>
-          <li>Durable materials with premium finish</li>
-        </ul>
-
-        <a href="contact.html" class="inline-block px-6 py-3 bg-indigo-600 text-white rounded-lg shadow hover:bg-indigo-700 transition">
-          <i class="fa-solid fa-phone mr-2"></i> Get a Quote
-        </a>
-      </div>
+<!-- 📝 2. ABOUT PRODUCT SECTION -->
+<section class="py-16 bg-white">
+  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
+    <div>
+      <img src="{{product.image.url}}" alt="Product" class="rounded-xl shadow-lg w-full h-[400px] object-cover">
     </div>
-  </section>
-
-
-
+    <div>
+      <h2 class="text-3xl font-bold mb-4">About This Product</h2>
+      <p class="text-gray-700 leading-relaxed text-lg">
+      {{product.description}}
+      </p>
+    </div>
+  </div>
+</section>
 
 {% endblock body %}

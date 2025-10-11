@@ -85,6 +85,7 @@ class Service(models.Model):
     description = models.TextField(max_length=1255)
     image=models.ImageField(upload_to='images/',null=False)
     detail=RichTextUploadingField()
+    aboutus = models.TextField(max_length=1255,null=True,blank=True)
     slug = models.SlugField(null=True,blank=True, unique=True,max_length=250)
     status=models.CharField(max_length=10,choices=STATUS)
     featured_project = models.BooleanField(default=False)
@@ -134,6 +135,19 @@ class Service_Images(models.Model):
     def __str__(self):
         return self.title
 
+
+class Service_Key_Feature(models.Model):
+    product = models.ForeignKey(Service, on_delete=models.CASCADE)
+    title = models.CharField(max_length=50)  # changed
+    description = models.CharField(max_length=100, blank=True, null=True)  # changed
+    icon = models.CharField(max_length=50, blank=True, null=True)  # changed
+
+    def __str__(self):
+        return self.title
+            
+
+
+
 class Product(models.Model):    
     STATUS = (
         ('True', 'True'),
@@ -143,7 +157,8 @@ class Product(models.Model):
     title = models.CharField(max_length=150)
     keywords = models.CharField(max_length=1255)
     description = models.TextField(max_length=1255)
-    image=models.ImageField(upload_to='images/',null=False)
+    usp_line = models.CharField(max_length=150,null=True,blank=True)
+    image=models.ImageField(upload_to='images/',null=False,)
     detail=RichTextUploadingField()
     slug = models.SlugField(null=True,blank=True, unique=True,max_length=250)
     status=models.CharField(max_length=10,choices=STATUS)

@@ -1,6 +1,6 @@
 from django.contrib import admin
 import admin_thumbnails
-
+from django.utils.html import format_html
 from .models import *
 # Register your models here.
 
@@ -27,6 +27,25 @@ class ServiceImageInline(admin.TabularInline):
     readonly_fields = ('id',)
     extra = 1
 
+class Service_Key_FeatureInline(admin.StackedInline):
+    model = Service_Key_Feature
+    extra = 1
+    fields = ('title', 'description', 'icon', 'icon_preview')
+    readonly_fields = ('icon_preview',)
+
+    def icon_preview(self, obj):
+        if obj.icon:
+            return format_html(f'<i class="{obj.icon}" style="font-size:22px;"></i>')
+        return "-"
+    icon_preview.short_description = "Preview"
+
+    class Media:
+        js = ('admin/js/icon-preview.js',)
+        css = {
+            'all': ('admin/css/icon-inline.css',)  # 👈 Custom styling
+        }
+
+
 
 
 class ProductAdmin(admin.ModelAdmin):
@@ -47,7 +66,7 @@ admin.site.register(Project,ProjectAdmin)
 class ServiceAdmin(admin.ModelAdmin):
     list_display = ['id','title','image_tag','featured_project',  'slug', 'create_at','update_at',]
     list_editable = ['featured_project',]
-    inlines = [ServiceImageInline,]
+    inlines = [ServiceImageInline,Service_Key_FeatureInline]
 
 admin.site.register(Service,ServiceAdmin)
 

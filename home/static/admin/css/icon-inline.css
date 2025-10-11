@@ -1,0 +1,14 @@
+.inline-related .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.inline-related .form-row > div {
+    flex: 1 1 45%;
+    min-width: 250px;
+}
+
+.inline-related .form-row .field-icon input {
+    width: 70%;
+}

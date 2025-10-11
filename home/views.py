@@ -13,6 +13,8 @@ def index(request):
     product = Product.objects.all().order_by('-id')
     gallery = MediaGallery.objects.all().order_by('-id')[:8]   # ✅ yahi sahi hai
     faq = FAQ.objects.all().order_by('-id')[:6]
+    service = Service.objects.all().order_by('-id')[:6]
+
 
 
     
@@ -27,6 +29,8 @@ def index(request):
         'faq': faq,
         'product': product,
         'gallery': gallery,
+        'service': service,
+
     }
 
     return render(request,'main/index.html',context)
@@ -60,8 +64,12 @@ def product(request):
     }
     return render(request,'main/product/product.html',context)
 
-def product_details(request,slug): 
+def product_details(request,slug):  
+    
     setting = Setting.objects.all().order_by('-id')[0:1]
+    images = Images.objects.all().order_by('-id')[0:6]
+
+
 
     product = Product.objects.filter(slug = slug)
     if product.exists():
@@ -70,8 +78,12 @@ def product_details(request,slug):
         return redirect('404')
     context = {
 
-        'product': product,
         'setting': setting,
+        'images': images,
+        'product':product,
+
+        
+        
     }   
      
     return render(request, 'main/product/product-details.html',context)
@@ -133,27 +145,34 @@ def project_details(request,slug):
 
 def service(request):    
     setting = Setting.objects.all().order_by('-id')[0:1]
-    service = Service.objects.all().order_by('?')
+    services = Service.objects.filter(status='True').order_by('id')
 
     page="home"
     context={
         'setting':setting,
-        'service':service,
+        'services':services,
     }
     return render(request,'main/services/services.html',context)
 
 def service_details(request,slug): 
     setting = Setting.objects.all().order_by('-id')[0:1]
 
-    service = Service.objects.filter(slug = slug)
+    service = Service.objects.filter(slug = slug) 
     if service.exists():
         service = Service.objects.get(slug = slug)
     else :
         return redirect('404')
-    context = {
+    
+    service_key_feature = Service_Key_Feature.objects.all().order_by('-id')[0:9]
+    service_images = Service_Images.objects.all().order_by('-id')[0:6]
 
-        'service': service,
+
+    context = {
         'setting': setting,
+        'service': service,
+        'service_key_feature': service_key_feature,
+        'service_images': service_images,
+
     }   
      
     return render(request, 'main/services/services-details.html',context)
