@@ -46,11 +46,12 @@ class Follow_UpAdmin(admin.ModelAdmin):
     list_per_page = 30 
 
 
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ('name','email', 'phone','created_at','updated_at',)
 
-
+admin.site.register(Contact, ContactAdmin)
 admin.site.register(Follow_Up,Follow_UpAdmin)
 admin.site.register(Meeting,MeetingAdmin)
-admin.site.register(Response,ResponseAdmin)
 admin.site.register(Response_From,)
 admin.site.register(Response_Status,)
 

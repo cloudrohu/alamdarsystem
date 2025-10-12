@@ -8,8 +8,9 @@ from django.forms import ModelForm
 from django.urls import reverse
 from django.utils.safestring import mark_safe
 from django.db.models.signals import pre_save
-
+from mptt.fields import TreeForeignKey
 from django.utils.text import slugify
+from mptt.models import MPTTModel
 # Create your models here.
 
 
@@ -238,3 +239,4 @@ class CommentForm(ModelForm):
     class Meta:
         model = Comment
         fields = ['subject', 'comment', 'rate']
+

@@ -53,14 +53,12 @@ class ProductAdmin(admin.ModelAdmin):
     list_editable = ['featured_project', 'Top_Deals_Of_The_Day','Top_Selling_Products','Recommended_For_You']
     inlines = [ProductImageInline,]
 
-admin.site.register(Product,ProductAdmin)
 
 class ProjectAdmin(admin.ModelAdmin):
     list_display = ['id','title','image_tag', 'Project_Type','featured_project',  'slug', 'create_at','update_at',]
     list_editable = ['featured_project','Project_Type',]
     inlines = [ProjectImageInline,]
 
-admin.site.register(Project,ProjectAdmin)
 
 
 class ServiceAdmin(admin.ModelAdmin):
@@ -69,7 +67,8 @@ class ServiceAdmin(admin.ModelAdmin):
     inlines = [ServiceImageInline,Service_Key_FeatureInline]
 
 admin.site.register(Service,ServiceAdmin)
-
+admin.site.register(Project,ProjectAdmin)
+admin.site.register(Product,ProductAdmin)
 admin.site.register(Images)
 admin.site.register(Project_Images)
 admin.site.register(Service_Images)

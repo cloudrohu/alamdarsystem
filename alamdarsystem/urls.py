@@ -46,5 +46,9 @@ urlpatterns = [
 
     path(('service/'), views.service, name='service'),
     path('service_details/<slug:slug>', views.service_details, name='service_details'),
+
+    path('thank_you/', views.THANK_YOU, name='thank_you'),
+
+
                                                                                                                                                                                                  
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

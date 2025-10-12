@@ -1,6 +1,10 @@
 from django.shortcuts import render,redirect
 from home.models import *
 from product.models import *
+from django.core.mail import send_mail
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse, request
+from django.views.decorators.csrf import csrf_protect
+from response.models import *
 import inspect
 
 
@@ -314,3 +318,40 @@ def REALESTATE(request):
         'setting':setting,
     }
     return render(request,'main/Real_Estate.html',context)
+
+
+
+#============================ Contact Us ========================================#
+def THANK_YOU(request):
+    return render(request,'main/thank-you.html')
+
+
+
+
+def submit_form(request):
+    if request.method == 'POST':
+        print("📩 Form Submitted!")   # <--- Debugging
+
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
+
+        print("📌 Data Received:", name, email, phone, subject, message)  # <--- Check values
+
+        try:
+            obj = Contact.objects.create(
+                name=name,
+                email=email,
+                phone=phone,
+                subject=subject,
+                message=message
+            )
+            print("✅ Saved Object:", obj)
+        except Exception as e:
+            print("❌ Error while saving:", e)
+
+        return redirect('thank_you')
+
+    return render(request, 'main/contact.html')
