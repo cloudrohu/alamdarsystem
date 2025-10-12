@@ -18,6 +18,8 @@ def index(request):
     gallery = MediaGallery.objects.all().order_by('-id')[:8]   # ✅ yahi sahi hai
     faq = FAQ.objects.all().order_by('-id')[:6]
     service = Service.objects.all().order_by('-id')[:6]
+    reviews = Review.objects.all()
+
 
 
 
@@ -34,6 +36,8 @@ def index(request):
         'product': product,
         'gallery': gallery,
         'service': service,
+        'reviews': reviews,
+
 
     }
 
@@ -43,6 +47,8 @@ def aboutus(request):
     setting = Setting.objects.all().order_by('-id')[0:1]
     about = About_Page.objects.all().order_by('-id')[0:1]
     slider = Slider.objects.all().order_by('-id')[0:6]
+    faq = FAQ.objects.all().order_by('-id')[0:6]
+
     
     
 
@@ -51,6 +57,8 @@ def aboutus(request):
         'setting':setting,
         'slider':slider,
         'about':about,
+        'faq':faq,
+
     }
 
     return render(request,'main/about.html',context)
@@ -355,3 +363,5 @@ def submit_form(request):
         return redirect('thank_you')
 
     return render(request, 'main/contact.html')
+
+

@@ -8,6 +8,7 @@ class Social_LinkInline(admin.TabularInline):
     list_display = ['id']
     model = Social_Link   
     extra = 1
+
 class SettingtAdmin(admin.ModelAdmin):
     list_display = ['title','company', 'update_at','status']
 
@@ -23,9 +24,8 @@ class Our_TeamAdmin(admin.ModelAdmin):
     list_display = ['id','title','image_thumbnail',]
     inlines = [Social_LinkInline,]
 
-@admin_thumbnails.thumbnail('image')
-class TestimonialAdmin(admin.ModelAdmin):
-    list_display = ['id','name','image_thumbnail',]
+class ReviewAdmin(admin.ModelAdmin):
+    list_display = ['id','name']
     
 
 
@@ -59,10 +59,9 @@ class Contact_PageAdmin(admin.ModelAdmin):
     list_display = ['id','title','keywords','description',]
 admin.site.register(Contact_Page,Contact_PageAdmin)
 
-admin.site.register(ContactMessage,ContactMessageAdmin)
 admin.site.register(Social_Link,Social_LinkAdmin)
 admin.site.register(Our_Team,Our_TeamAdmin)
-admin.site.register(Testimonial,TestimonialAdmin)
+admin.site.register(Review,ReviewAdmin)
 
 admin.site.register(Offer,OfferAdmin)
 admin.site.register(Slider,SliderAdmin)

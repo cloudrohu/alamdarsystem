@@ -92,38 +92,7 @@ class Setting(models.Model):
     class Meta:
         verbose_name_plural='9. Web Site Setting'
 
-class ContactMessage(models.Model):
-    STATUS = (
-        ('New', 'New'),
-        ('Read', 'Read'),
-        ('Closed', 'Closed'),
-    )
-    name= models.CharField(blank=False,max_length=20)
-    email= models.EmailField(blank=False,max_length=50)
-    subject= models.CharField(blank=False,max_length=50)
-    message= models.TextField(blank=False,max_length=255)
-    status=models.CharField(max_length=10,choices=STATUS,default='New')
-    ip = models.CharField(blank=True, max_length=20)
-    note = models.CharField(blank=True, max_length=100)
-    create_at=models.DateTimeField(auto_now_add=True)
-    update_at=models.DateTimeField(auto_now=True)
 
-    def __str__(self):
-        return self.name
-    
-    class Meta:
-        verbose_name_plural='1. ContactMessage'
-
-class ContactForm(ModelForm):
-    class Meta:
-        model = ContactMessage
-        fields = ['name', 'email', 'subject','message']
-        widgets = {
-            'name'   : TextInput (attrs={'class': 'input','placeholder':'Name & Surname',} ),
-            'subject' : TextInput(attrs={'class': 'input','placeholder':'Subject'}),
-            'email'   : TextInput(attrs={'class': 'input','placeholder':'Email Address'}),
-            'message' : Textarea(attrs={'class': 'input','placeholder':'Your Message','rows':'5'}),
-        }
 
 class FAQ(models.Model):
     STATUS = (
@@ -163,25 +132,18 @@ class Our_Team(models.Model):
     class Meta:
         verbose_name_plural='4. Our Team'
 
-class Testimonial(models.Model):
-    name = models.CharField(max_length=50,blank=True)
-    designation = models.CharField(max_length=50,null=True, blank=True)
-    comment = models.CharField(max_length=500,blank=True)
-    image = models.ImageField(upload_to='images/')
-    status = models.BooleanField(default=True)
-    featured = models.BooleanField(default=False)
+class Review(models.Model):
+    name = models.CharField(max_length=100)
+    location = models.CharField(max_length=100)
+    rating = models.DecimalField(max_digits=2, decimal_places=1, default=5.0)
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
 
-    def image_tag(self):
-        if self.image.url is not None:
-            return mark_safe('<img src="{}" height="50"/>'.format(self.image.url))
-        else:
-            return ""
+    class Meta:
+        ordering = ['-created_at']
 
     def __str__(self):
-        return self.name
-    
-    class Meta:
-        verbose_name_plural='5. Testimonial'
+        return f"{self.name} ({self.location})"
 
 class Social_Link(models.Model):
     social_site = models.ForeignKey(Social_Site, on_delete=models.CASCADE)

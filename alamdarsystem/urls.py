@@ -14,7 +14,8 @@ urlpatterns = [
 
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('admin/', admin.site.urls),
-    path(('contactus/'), views.contactus, name='contactus'),
+    path('contactus/', views.contactus, name='contactus'),  # existing ✅
+    path('contactus/submit/', views.submit_form, name='submit_form'),  # 👈 NEW ✅
     path(('faqs/'), views.faqs, name='faqs'),
     path(('product/'), views.product, name='product'),
     path(('brand/'), views.BRAND, name='brand'),

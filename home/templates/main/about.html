@@ -8,9 +8,9 @@
     <!-- ===== HERO SECTION ===== -->
 <section class="relative bg-gradient-to-r from-indigo-700 via-indigo-800 to-indigo-900 text-white py-28">
   <div class="container mx-auto px-6 md:px-12 lg:px-20 text-center">
-    <h1 class="text-5xl md:text-6xl font-extrabold mb-6">About <span class="text-yellow-400">Alamdar</span></h1>
+    <h1 class="text-5xl md:text-6xl font-extrabold mb-6">About <span class="text-yellow-400">{{rs.title}}</span></h1>
     <p class="max-w-3xl mx-auto text-lg text-indigo-100 mb-8">
-      Redefining living spaces with windows, doors & interiors that combine style, safety and durability.
+      {{rs.description}}
     </p>
     <a href="#about" class="px-8 py-3 bg-yellow-400 text-gray-900 rounded-lg font-semibold shadow hover:bg-yellow-300 transition">
       Know More
@@ -21,64 +21,54 @@
 <!-- ===== ABOUT SECTION ===== -->
 <section id="about" class="py-20 bg-white">
   <div class="container mx-auto px-6 md:px-12 lg:px-20 grid lg:grid-cols-2 gap-12 items-center">
+   {% for rs in about %}
     <div class="relative">
-      <img src="{% static '' %}assets/img/about.png" alt="About Us" class="rounded-2xl shadow-2xl">
-      <span class="absolute -bottom-6 -right-6 bg-yellow-400 text-gray-900 px-6 py-3 rounded-lg font-bold shadow-lg">
-        16+ Years Experience
-      </span>
+      <img src="{{rs.image.url}}" alt="About Us" class="rounded-2xl shadow-2xl h-[60vh] w-[90%]">
+    
     </div>
+    {% endfor %}
+
+   {% for rs in about %}
     <div>
       <h2 class="text-3xl font-bold text-gray-900 mb-6">Who We Are</h2>
       <p class="text-gray-600 leading-relaxed mb-4">
-        With years of excellence, Alamdar System Windows has been setting benchmarks in premium window and interior solutions. 
-        From design to installation, we bring your vision to life.
+        {{rs.aboutus |safe|truncatechars:600}}
       </p>
-      <ul class="space-y-3 text-gray-700">
-        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-yellow-400"></i> Modern Window & Door Systems</li>
-        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-yellow-400"></i> Durable & Elegant Interiors</li>
-        <li class="flex items-center gap-3"><i class="fa-solid fa-check text-yellow-400"></i> Complete Installation & Support</li>
-      </ul>
+     
     </div>
+    {% endfor %}
+
   </div>
 </section>
 
 <!-- ===== MISSION SECTION ===== -->
+ {% for rs in about %}
 <section class="py-20 bg-gray-50">
   <div class="container mx-auto px-6 md:px-12 lg:px-20 grid lg:grid-cols-2 gap-12 items-center">
     <div>
       <h2 class="text-3xl font-bold text-gray-900 mb-6">Our Mission</h2>
       <p class="text-gray-600 leading-relaxed mb-6">
-        To transform living & working spaces with innovative, eco-friendly and stylish architectural solutions 
-        that ensure comfort, safety, and beauty.
+        {{rs.mission}}
       </p>
-      <div class="grid grid-cols-2 gap-6">
-        <div class="bg-white p-6 rounded-xl shadow text-center">
-          <h3 class="text-3xl font-bold text-indigo-600">500+</h3>
-          <p class="text-gray-500">Projects</p>
-        </div>
-        <div class="bg-white p-6 rounded-xl shadow text-center">
-          <h3 class="text-3xl font-bold text-indigo-600">300+</h3>
-          <p class="text-gray-500">Clients</p>
-        </div>
-      </div>
     </div>
     <div>
-      <img src="{% static '' %}assets/img/about/mission/image.png" alt="Mission" class="rounded-2xl shadow-2xl h-[450px] w-[500px]">
+      <img src="{{rs.image.url}}" alt="Mission" class="rounded-2xl shadow-2xl h-[450px] w-[500px]">
     </div>
   </div>
 </section>
-
+{% endfor %}
 <!-- ===== VISION SECTION ===== -->
+ {% for rs in about %}
+
 <section class="py-20 bg-white">
   <div class="container mx-auto px-6 md:px-12 lg:px-20 grid lg:grid-cols-2 gap-12 items-center">
     <div class="order-2 lg:order-1">
-      <img src="{% static '' %}assets/img/about/vission/image copy.png" alt="Vision" class="rounded-2xl shadow-2xl  h-[450px] w-[500px]">
+      <img src="{{rs.image.url}}" alt="Vision" class="rounded-2xl shadow-2xl  h-[450px] w-[500px]">
     </div>
     <div class="order-1 lg:order-2">
       <h2 class="text-3xl font-bold text-gray-900 mb-6">Our Vision</h2>
       <p class="text-gray-600 leading-relaxed">
-        To be recognized globally for innovation, quality and sustainability in windows, doors, and interiors — 
-        creating spaces that inspire elegance and comfort.
+        {{rs.vision}}
       </p>
       <div class="mt-6 bg-indigo-600 text-white p-6 rounded-xl shadow-lg italic">
         <i class="fa-solid fa-lightbulb text-2xl mb-2"></i>  
@@ -87,56 +77,25 @@
     </div>
   </div>
 </section>
+{% endfor %}
 
 <!-- ===== FAQ SECTION ===== -->
 <section class="py-20 bg-gray-50">
   <div class="container mx-auto px-6 md:px-12 lg:px-20">
     <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">FAQs</h2>
     <div class="max-w-3xl mx-auto space-y-4">
+      {% for rs in faq %}
       <details class="p-6 bg-white rounded-xl shadow cursor-pointer">
-        <summary class="font-semibold text-indigo-700">What services do you provide?</summary>
-        <p class="mt-3 text-gray-600">Windows, doors, interiors, installation & full support.</p>
+        <summary class="font-semibold text-indigo-700">{{rs.question}}</summary>
+        <p class="mt-3 text-gray-600">{{rs.answer}}</p>
       </details>
-      <details class="p-6 bg-white rounded-xl shadow cursor-pointer">
-        <summary class="font-semibold text-indigo-700">Do you make custom designs?</summary>
-        <p class="mt-3 text-gray-600">Yes, all products are tailored to your needs.</p>
-      </details>
-      <details class="p-6 bg-white rounded-xl shadow cursor-pointer">
-        <summary class="font-semibold text-indigo-700">Where are you located?</summary>
-        <p class="mt-3 text-gray-600">We are based in Mumbai, serving clients across India.</p>
-      </details>
+      {% endfor %}
+   
     </div>
   </div>
 </section>
 
-<!-- ===== TEAM SECTION ===== -->
-<section class="py-20 bg-white">
-  <div class="container mx-auto px-6 md:px-12 lg:px-20">
-    <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">Meet Our Team</h2>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
-      <div class="text-center bg-gray-200 rounded-xl p-6 shadow hover:shadow-lg transition">
-        <img src="https://i.pravatar.cc/150?img=1" class="w-32 h-32 mx-auto rounded-full mb-4">
-        <h3 class="text-lg font-semibold">Amit Sharma</h3>
-        <p class="text-gray-500">CEO</p>
-      </div>
-      <div class="text-center bg-gray-200 rounded-xl p-6 shadow hover:shadow-lg transition">
-        <img src="https://i.pravatar.cc/150?img=2" class="w-32 h-32 mx-auto rounded-full mb-4">
-        <h3 class="text-lg font-semibold">Priya Verma</h3>
-        <p class="text-gray-500">Creative Head</p>
-      </div>
-      <div class="text-center bg-gray-200 rounded-xl p-6 shadow hover:shadow-lg transition">
-        <img src="https://i.pravatar.cc/150?img=3" class="w-32 h-32 mx-auto rounded-full mb-4">
-        <h3 class="text-lg font-semibold">Rahul Mehta</h3>
-        <p class="text-gray-500">Operations</p>
-      </div>
-      <div class="text-center bg-gray-200 rounded-xl p-6 shadow hover:shadow-lg transition">
-        <img src="https://i.pravatar.cc/150?img=4" class="w-32 h-32 mx-auto rounded-full mb-4">
-        <h3 class="text-lg font-semibold">Neha Singh</h3>
-        <p class="text-gray-500">Marketing</p>
-      </div>
-    </div>
-  </div>
-</section>
+
 
 
 <!-- ===== CONTACT SECTION ===== -->
@@ -165,8 +124,8 @@
             </div>
             <div>
               <p class="text-gray-600">Call Us</p>
-              <a href="tel:+919898034466" class="font-semibold text-gray-900 hover:text-indigo-600">
-                +91 9898 03 4466
+              <a href="tel:+91{{rs.phone}}" class="font-semibold text-gray-900 hover:text-indigo-600">
+                +91 {{rs.phone}}
               </a>
             </div>
           </div>
@@ -177,8 +136,8 @@
             </div>
             <div>
               <p class="text-gray-600">Email</p>
-              <a href="mailto:info@alamdarwindows.com" class="font-semibold text-gray-900 hover:text-indigo-600">
-                info@alamdarwindows.com
+              <a href="mailto:{{rs.email}}" class="font-semibold text-gray-900 hover:text-indigo-600">
+                {{rs.email}}
               </a>
             </div>
           </div>
@@ -189,23 +148,23 @@
             </div>
             <div>
               <p class="text-gray-600">Office</p>
-              <p class="font-semibold text-gray-900">123 Business Street, Mumbai</p>
+              <p class="font-semibold text-gray-900">{{rs.address}}</p>
             </div>
           </div>
         </div>
 
         <!-- Social Links -->
         <div class="flex items-center gap-6 mt-8">
-          <a href="#" class="text-indigo-600 hover:text-indigo-800"><i class="fa-brands fa-facebook-f text-xl"></i></a>
-          <a href="#" class="text-indigo-600 hover:text-indigo-800"><i class="fa-brands fa-instagram text-xl"></i></a>
-          <a href="#" class="text-indigo-600 hover:text-indigo-800"><i class="fa-brands fa-linkedin-in text-xl"></i></a>
+          <a href="{{rs.facebook}}" class="text-indigo-600 hover:text-indigo-800"><i class="fa-brands fa-facebook-f text-xl"></i></a>
+          <a href="{{rs.instagram}}" class="text-indigo-600 hover:text-indigo-800"><i class="fa-brands fa-instagram text-xl"></i></a>
+          <a href="{{rs.twitter}}" class="text-indigo-600 hover:text-indigo-800"><i class="fa-brands fa-twitter text-xl"></i></a>
         </div>
       </div>
 
       <!-- Contact Form -->
       <div class="backdrop-blur-xl bg-white/80 rounded-2xl shadow-xl border border-gray-200 p-10">
-        <form action="#" method="POST" class="space-y-6">
-          
+        <form action="{% url "submit_form" %}" method="POST" class="space-y-6">
+          {% csrf_token %}
           <!-- Name -->
           <div>
             <label for="name" class="block text-sm font-medium text-gray-700">Your Name</label>
