@@ -365,3 +365,18 @@ def submit_form(request):
     return render(request, 'main/contact.html')
 
 
+
+
+
+def Terms_and_condition(request):
+    return render(request,'main/terms_and_condition.html')
+
+def Privacy_Policy(request):
+    return render(request,'main/privacy_policy.html')
+
+
+def Cookies(request):
+    return render(request,'main/cookies.html')
+
+
+

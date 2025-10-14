@@ -49,6 +49,8 @@ urlpatterns = [
     path('service_details/<slug:slug>', views.service_details, name='service_details'),
 
     path('thank_you/', views.THANK_YOU, name='thank_you'),
+    path('privacy_policy/', views.Privacy_Policy, name='privacy_policy'),
+    path('cookies/', views.Cookies, name='cookies'),
     path('terms_and_condition/', views.Terms_and_condition, name='terms_and_condition'),
 
 
