@@ -229,10 +229,14 @@ def BLOG(request):
 
 def Gallery(request):    
     setting = Setting.objects.all().order_by('-id')[0:1]
+    mediagallery = MediaGallery.objects.all().order_by('-id')
+
 
     page="home"
     context={
         'setting':setting,
+        'mediagallery':mediagallery,
+        
     }
     return render(request,'main/Gallery.html',context)
 

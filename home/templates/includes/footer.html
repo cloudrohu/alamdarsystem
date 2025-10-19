@@ -40,9 +40,9 @@
       <div>
         <h3 class="text-white text-lg font-semibold mb-6">Legal</h3>
         <ul class="space-y-3 text-sm">
-          <li><a href="" class="hover:text-indigo-400 transition">Terms & Conditions</a></li>
-          <li><a href="" class="hover:text-indigo-400 transition">Privacy Policy</a></li>
-          <li><a href="" class="hover:text-indigo-400 transition">Cookie Policy</a></li>
+          <li><a href="{% url "terms_and_condition" %}" class="hover:text-indigo-400 transition">Terms & Conditions</a></li>
+          <li><a href="{% url "privacy_policy" %}" class="hover:text-indigo-400 transition">Privacy Policy</a></li>
+          <li><a href="{% url "cookies" %}" class="hover:text-indigo-400 transition">Cookie Policy</a></li>
         </ul>
 
         <!-- Newsletter -->
@@ -79,22 +79,21 @@
     <div class="mt-12 border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center text-gray-400 text-sm">
       <p>© <span id="year"></span> {{ rs.copy_right }}. All Rights Reserved.</p>
       <div class="flex gap-4 mt-3 md:mt-0">
-        <a href="" class="hover:text-indigo-400">Terms</a>
-        <a href="" class="hover:text-indigo-400">Privacy</a>
-        <a href="" class="hover:text-indigo-400">Cookies</a>
+        <a href="{% url "terms_and_condition" %}" class="hover:text-indigo-400">Terms</a>
+        <a href="{% url "privacy_policy" %}" class="hover:text-indigo-400">Privacy</a>
+        <a href="{% url "cookies" %}" class="hover:text-indigo-400">Cookies</a>
       </div>
     </div>
   </div>
 
   <!-- Cookie Consent Bar -->
   <div id="cookieBar" class="fixed bottom-0 left-0 w-full bg-gray-800 text-gray-200 text-sm py-3 px-4 flex flex-col md:flex-row md:items-center md:justify-between gap-3 shadow-lg">
-    <span>🍪 We use cookies to improve your experience. By continuing, you agree to our <a href="" class="underline hover:text-indigo-400">Cookie Policy</a>.</span>
+    <span>🍪 We use cookies to improve your experience. By continuing, you agree to our <a href="{% url "cookies" %}" class="underline hover:text-indigo-400">Cookie Policy</a>.</span>
     <button onclick="acceptCookies()" class="bg-indigo-600 hover:bg-indigo-700 px-4 py-2 text-white text-sm rounded-md w-fit">Accept</button>
   </div>
 </footer>
 
 <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
   function acceptCookies() {
     localStorage.setItem('cookiesAccepted', 'true');
     document.getElementById('cookieBar').classList.add('hidden');
